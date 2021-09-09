@@ -1,4 +1,4 @@
-import PageContainer from "../../components/PageContainer/index";
+import PageContainer from '../../components/PageContainer/index';
 export default function Home() {
   return (
     <PageContainer title="Hello">

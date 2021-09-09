@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.css";
-import Menu from "./components/Menu";
-import Home from "./pages/Home/index";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './App.css';
+import Menu from './components/Menu';
+import Home from './pages/Home/index';
 
 function App() {
   return (
