@@ -5,5 +5,8 @@ export const backgroundTheme = createTheme({
     primary: {
       main: '#342f32', // Temporary primary theme
     },
+    secondary: {
+      main: '#dedede', // Temporary secondary theme
+    },
   },
 });
