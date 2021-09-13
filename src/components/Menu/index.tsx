@@ -1,7 +1,7 @@
 export default function Menu() {
   return (
     <div>
-      <nav>Here come the menu</nav>
+      <nav>Here comes the menu</nav>
     </div>
   );
 }
