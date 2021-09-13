@@ -23,13 +23,13 @@ module.exports = {
     'no-console': 'warn',
     'import/first': 'error',
     'react/prop-types': 0,
-    'linebreak-style': ['error', 'unix'],
+    'linebreak-style': 0,
     'arrow-body-style': 'off',
     'prefer-arrow-callback': 'off',
     'prettier/prettier': [
       'error',
       {
-        endOfLine: 'lf',
+        endOfLine: 'auto',
       },
     ],
   },
