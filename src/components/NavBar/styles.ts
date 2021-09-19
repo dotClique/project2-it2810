@@ -6,7 +6,14 @@ const useStyles = makeStyles((theme) =>
       color: theme.palette.secondary.contrastText,
     },
     menuItem: {
-      color: theme.palette.info.contrastText,
+      color: theme.palette.secondary.main,
+    },
+    toolBar: {
+      display: 'flex',
+      justifyContent: 'space-between',
+    },
+    linkContainer: {
+      display: 'flex',
     },
   }),
 );

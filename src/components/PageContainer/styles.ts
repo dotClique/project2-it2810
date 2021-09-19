@@ -5,8 +5,11 @@ const useStyles = makeStyles((theme) =>
     main: {
       color: theme.palette.primary.contrastText,
       backgroundColor: theme.palette.primary.main,
-      borderRadius: '0 0 10px 10px',
+
       paddingBottom: '20px',
+      [theme.breakpoints.up('md')]: {
+        borderRadius: '0 0 10px 10px',
+      },
     },
   }),
 );
