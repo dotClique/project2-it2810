@@ -34,7 +34,6 @@ export default function NavBar(props: MenuProps) {
   const classes = useStyles();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  console.log(isMobile);
   return (
     <div>
       <AppBar position="sticky" color="secondary">
