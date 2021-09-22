@@ -1,16 +1,18 @@
 import useStyles from './styles';
-
+import { Container, Grid } from '@material-ui/core';
 type PageContainerProps = {
-  title: string;
   children: JSX.Element;
+  title?: string;
 };
 
 export default function PageContainer(props: PageContainerProps) {
-  const classes = useStyles();
+  const style = useStyles();
   return (
-    <div className={classes.overDiv}>
-      <h1>{props.title}</h1>
-      <div>{props.children}</div>
-    </div>
+    <Grid container>
+      <Container className={style.main} maxWidth="md">
+        {props.title ? <h3>{props.title}</h3> : false}
+        {props.children}
+      </Container>
+    </Grid>
   );
 }
