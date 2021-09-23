@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Paper from '@material-ui/core/Paper';
 import { Chart, PieSeries, Title, Tooltip } from '@devexpress/dx-react-chart-material-ui';
 import { Animation, EventTracker } from '@devexpress/dx-react-chart';
+import ChartContainer from '../ChartContainer';
 
 type ChartPieProps = {
   data: { commitType: string; val: number }[];
@@ -10,7 +10,7 @@ type ChartPieProps = {
 
 export default function ChartPie(props: ChartPieProps) {
   return (
-    <Paper>
+    <ChartContainer>
       <Chart data={props.data}>
         <PieSeries valueField="val" argumentField="commitType" innerRadius={0.6} />
         <Title text={props.title} />
@@ -18,6 +18,6 @@ export default function ChartPie(props: ChartPieProps) {
         <Tooltip />
         <Animation />
       </Chart>
-    </Paper>
+    </ChartContainer>
   );
 }

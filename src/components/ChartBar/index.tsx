@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Paper from '@material-ui/core/Paper';
 import {
   ValueAxis,
   BarSeries,
@@ -8,6 +7,7 @@ import {
   ArgumentAxis,
 } from '@devexpress/dx-react-chart-material-ui';
 import { Animation, ValueScale } from '@devexpress/dx-react-chart';
+import ChartContainer from '../ChartContainer';
 
 interface IDataItem {
   barValue: number;
@@ -17,7 +17,7 @@ interface IDataItem {
 export default class ChartBar extends React.Component<{ data: IDataItem[]; title: string }, {}> {
   render(): React.ReactNode {
     return (
-      <Paper>
+      <ChartContainer>
         <Chart data={this.props.data}>
           <ValueScale name="barValue" />
           <ArgumentAxis />
@@ -32,7 +32,7 @@ export default class ChartBar extends React.Component<{ data: IDataItem[]; title
           <Title text={this.props.title} />
           <Animation />
         </Chart>
-      </Paper>
+      </ChartContainer>
     );
   }
 }
