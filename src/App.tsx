@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import { backgroundTheme } from './helpers/themes';
 import Home from './pages/Home/index';
+import PieChartPage from './pages/PieChartPage';
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route exact path={'/pie'}>
+              <PieChartPage />
             </Route>
           </Switch>
         </Router>
