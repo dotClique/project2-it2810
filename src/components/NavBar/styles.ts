@@ -5,6 +5,9 @@ const useStyles = makeStyles((theme) =>
     icon: {
       color: theme.palette.secondary.contrastText,
     },
+    title: {
+      color: theme.palette.secondary.contrastText,
+    },
     menuItem: {
       color: theme.palette.secondary.main,
     },

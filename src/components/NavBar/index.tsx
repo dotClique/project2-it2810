@@ -39,7 +39,7 @@ export default function NavBar(props: MenuProps) {
       <AppBar position="sticky" color="secondary">
         <Toolbar className={classes.toolBar}>
           <Link href={'/'} underline={'none'}>
-            <Typography variant="h6" component="div">
+            <Typography variant="h6" component="div" className={classes.title}>
               {props.title}
             </Typography>
           </Link>
