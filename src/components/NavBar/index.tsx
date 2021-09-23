@@ -38,14 +38,17 @@ export default function NavBar(props: MenuProps) {
     <div>
       <AppBar position="sticky" color="secondary">
         <Toolbar className={classes.toolBar}>
-          <Typography variant="h6" component="div">
-            {props.title}
-          </Typography>
+          <Link href={'/'} underline={'none'}>
+            <Typography variant="h6" component="div">
+              {props.title}
+            </Typography>
+          </Link>
           {isMobile ? (
             <>
               <IconButton edge="end" className={classes.icon} onClick={handleMenu}>
                 <MenuIcon width={'2rem'} />
               </IconButton>
+
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -57,18 +60,18 @@ export default function NavBar(props: MenuProps) {
                 open={menuOpen}
                 onClose={handleClose}
               >
-                <Link underline="none" href={'/page1'}>
-                  <MenuItem className={classes.menuItem}>Page 1</MenuItem>
+                <Link underline="none" href={'/pie'}>
+                  <MenuItem className={classes.menuItem}>Pie</MenuItem>
                 </Link>
-                <Link underline="none" href={'/page2'}>
-                  <MenuItem className={classes.menuItem}>Page 2</MenuItem>
+                <Link underline="none" href={'/bar'}>
+                  <MenuItem className={classes.menuItem}>Bar</MenuItem>
                 </Link>
               </Menu>
             </>
           ) : (
             <div className={classes.linkContainer}>
-              <IconLink title={'page1'} icon={<ChartBarIcon />} />
-              <IconLink title={'page2'} icon={<ChartPieIcon />} />
+              <IconLink url={'pie'} title={'Pie!'} icon={<ChartPieIcon />} />
+              <IconLink url={'bar'} title={'Bar'} icon={<ChartBarIcon />} />
             </div>
           )}
         </Toolbar>
