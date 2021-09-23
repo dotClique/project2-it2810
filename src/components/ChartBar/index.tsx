@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { Component } from 'react';
 import {
   ValueAxis,
   BarSeries,
@@ -14,7 +14,7 @@ interface IDataItem {
   barLabel: string;
 }
 
-export default class ChartBar extends React.Component<{ data: IDataItem[]; title: string }, {}> {
+export default class ChartBar extends Component<{ data: IDataItem[]; title: string }, {}> {
   render(): React.ReactNode {
     return (
       <ChartContainer>

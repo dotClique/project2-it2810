@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Chart, PieSeries, Title, Tooltip } from '@devexpress/dx-react-chart-material-ui';
 import { Animation, EventTracker } from '@devexpress/dx-react-chart';
 import ChartContainer from '../ChartContainer';
