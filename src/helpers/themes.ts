@@ -3,10 +3,16 @@ import { createTheme } from '@material-ui/core';
 export const backgroundTheme = createTheme({
   palette: {
     primary: {
-      main: '#342f32', // Temporary primary theme
+      main: '#dedede', // Temporary secondary theme
+      contrastText: '#405070',
     },
     secondary: {
-      main: '#dedede', // Temporary secondary theme
+      main: '#342f32', // Temporary primary theme
+      contrastText: '#dedede',
+    },
+    info: {
+      main: '#ff0909', // Temporary info theme
+      contrastText: '#9e01ba',
     },
   },
 });
