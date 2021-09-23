@@ -1,7 +1,8 @@
 import useStyles from './styles';
 import { Container, Grid } from '@material-ui/core';
+import { ReactNode } from 'react';
 type PageContainerProps = {
-  children: JSX.Element;
+  children: ReactNode;
   title?: string;
 };
 
