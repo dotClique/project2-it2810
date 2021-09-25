@@ -10,6 +10,7 @@ import Home from './pages/Home/index';
 import SettingsPage from './pages/SettingsPage/index';
 import FeatsVsFixesPage from './pages/FeatsVsFixesPage';
 import CommitsPerBranchPage from './pages/CommitsPerBranch';
+import TimePerIssueLabelPage from './pages/TimePerIssueLabelPage/index';
 
 function App() {
   const [openSettings, setOpenSettings] = useState(false);
@@ -32,6 +33,9 @@ function App() {
               </Route>
               <Route exact path={'/branches'}>
                 <CommitsPerBranchPage />
+              </Route>
+              <Route exact path={'/timeperissuelabel'}>
+                <TimePerIssueLabelPage />
               </Route>
             </Switch>
           </Router>
