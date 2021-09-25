@@ -1,19 +1,20 @@
-import { MouseEvent, useState } from 'react';
+import { ChartBarIcon, ChartPieIcon, CogIcon } from '@heroicons/react/outline';
+import { MenuIcon } from '@heroicons/react/solid';
 import {
   AppBar,
   IconButton,
   Link,
-  MenuItem,
   Menu,
+  MenuItem,
   Toolbar,
   Typography,
   useMediaQuery,
   useTheme,
 } from '@material-ui/core';
-import { MenuIcon } from '@heroicons/react/solid';
-import useStyles from './styles';
+import { MouseEvent, useContext, useState } from 'react';
+import { OpenSettingsContext } from '../../helpers/context';
 import IconLink from '../IconLink';
-import { ChartBarIcon, ChartPieIcon } from '@heroicons/react/outline';
+import useStyles from './styles';
 
 type MenuProps = {
   title: string;
@@ -33,6 +34,7 @@ export default function NavBar(props: MenuProps) {
   const theme = useTheme();
   const classes = useStyles();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const [, setOpenSettings] = useContext(OpenSettingsContext);
 
   return (
     <div>
@@ -66,12 +68,20 @@ export default function NavBar(props: MenuProps) {
                 <Link underline="none" href={'/bar'}>
                   <MenuItem className={classes.menuItem}>Bar</MenuItem>
                 </Link>
+                <MenuItem className={classes.menuItem} onClick={() => setOpenSettings(true)}>
+                  Settings
+                </MenuItem>
               </Menu>
             </>
           ) : (
             <div className={classes.linkContainer}>
               <IconLink url={'pie'} title={'Pie!'} icon={<ChartPieIcon />} />
               <IconLink url={'bar'} title={'Bar'} icon={<ChartBarIcon />} />
+              <IconLink
+                title={'settings'}
+                icon={<CogIcon />}
+                onClick={() => setOpenSettings(true)}
+              />
             </div>
           )}
         </Toolbar>
