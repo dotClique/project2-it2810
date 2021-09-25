@@ -9,6 +9,7 @@ import BarChartPage from './pages/BarChartPage';
 import Home from './pages/Home/index';
 import SettingsPage from './pages/SettingsPage/index';
 import FeatsVsFixesPage from './pages/FeatsVsFixesPage';
+import TimePerIssueLabelPage from './pages/TimePerIssueLabelPage/index';
 
 function App() {
   const [openSettings, setOpenSettings] = useState(false);
@@ -28,6 +29,9 @@ function App() {
               </Route>
               <Route exact path={'/bar'}>
                 <BarChartPage />
+              </Route>
+              <Route exact path={'/timeperissuelabel'}>
+                <TimePerIssueLabelPage />
               </Route>
             </Switch>
           </Router>
