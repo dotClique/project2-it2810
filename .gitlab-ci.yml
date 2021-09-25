@@ -2,15 +2,22 @@ image: node
 
 stages:
   - build
+  - lint
 
 
 build site:
-  image: node:6
+  image: node
   stage: build
   script:
-    - npm install --progress=false
+    - npm ci --progress=false
     - npm run build
   artifacts:
     expire_in: 1 week
     paths:
       - dist
+
+eslint:
+  stage: lint
+  script:
+    - npm i eslint
+    - eslint .
