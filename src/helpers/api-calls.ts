@@ -35,7 +35,7 @@ export const getIssueBoardsFromAPI = async () => {
 };
 
 const getCommitsFromAPIRecursive = async (data: Array<commit>, page: number) => {
-  return fromAPI(`/repository/commits?per_page=20&page=${page}`, 'GET').then(async (res) => {
+  return fromAPI(`/repository/commits?per_page=101000&page=${page}`, 'GET').then(async (res) => {
     if (res.ok) {
       data = data.concat(res.data);
       if (res.headers.get('x-next-page')) {
