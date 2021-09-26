@@ -81,6 +81,10 @@ export default function FeatsVsFixesPage() {
 
   return (
     <PageContainer title="Commit statistics">
+      Here you can see data about the ratio between feats and fixes, and the ratio between lines of
+      code added and deleted. This is cumulative data of all the commits in the master branch. You
+      can also choose who you want to see data about. This is anonymised to preserve the
+      authors&apos; privacy.
       {authorData.map((m, i) => {
         if (m.feats || m.fixes) {
           return (
@@ -98,7 +102,6 @@ export default function FeatsVsFixesPage() {
           );
         }
       })}
-
       <ChartPie data={featsFixesGraphData} title={'feats vs fixes'} legend />
       <ChartPie data={additionsDeletionsGraphData} title={'additions vs deletions'} legend />
     </PageContainer>
