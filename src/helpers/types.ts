@@ -25,4 +25,19 @@ export type commit = {
   message: string;
   parent_ids: string[];
   web_url: string;
+  stats: {
+    additions: number;
+    deletions: number;
+    total: number;
+  };
+};
+
+export type author = {
+  name: string;
+  num: number;
+  feats: number;
+  fixes: number;
+  active: boolean;
+  additions: number;
+  deletions: number;
 };

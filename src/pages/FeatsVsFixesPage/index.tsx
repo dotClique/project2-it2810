@@ -2,7 +2,7 @@ import PageContainer from '../../components/PageContainer/index';
 import ChartPie from '../../components/ChartPie';
 import { getAllCommitsFromAPI } from '../../helpers/api-calls';
 import { useEffect, useState } from 'react';
-import { commit } from '../../helpers/types';
+import { author, commit } from '../../helpers/types';
 import { Checkbox } from '@material-ui/core';
 
 function commit_type(commitMessage: string): 'feat' | 'fix' | 'else' {
@@ -13,8 +13,7 @@ function commit_type(commitMessage: string): 'feat' | 'fix' | 'else' {
 }
 
 function parse(commits: Array<commit>) {
-  const authors: { name: string; num: number; feats: number; fixes: number; active: boolean }[] =
-    [];
+  const authors: author[] = [];
   for (let i = 0; i < commits.length; i++) {
     const author = commits[i].author_email;
     let author_exists = false;
@@ -31,6 +30,8 @@ function parse(commits: Array<commit>) {
             authors[j].fixes++;
             break;
         }
+        authors[j].additions += commits[i].stats.additions;
+        authors[j].deletions += commits[i].stats.deletions;
       }
     }
     if (!author_exists) {
@@ -40,6 +41,8 @@ function parse(commits: Array<commit>) {
         feats: c_type == 'feat' ? 1 : 0,
         fixes: c_type == 'fix' ? 1 : 0,
         active: true,
+        additions: commits[i].stats.additions,
+        deletions: commits[i].stats.deletions,
       });
     }
   }
@@ -47,31 +50,37 @@ function parse(commits: Array<commit>) {
 }
 
 export default function FeatsVsFixesPage() {
-  const [authorData, setAuthorData] = useState<
-    { name: string; num: number; feats: number; fixes: number; active: boolean }[]
-  >([]);
+  const [authorData, setAuthorData] = useState<author[]>([]);
 
-  let graphData: Array<{ commitType: string; val: number }> = [
+  let featsFixesGraphData: Array<{ commitType: string; val: number }> = [
     { commitType: 'feat', val: 0 },
     { commitType: 'fix', val: 0 },
   ];
 
+  let additionsDeletionsGraphData: Array<{ commitType: string; val: number }> = [
+    { commitType: 'additions', val: 0 },
+    { commitType: 'deletions', val: 0 },
+  ];
+
   for (let i = 0; i < authorData.length; i++) {
     if (authorData[i].active) {
-      graphData[0].val += authorData[i].feats;
-      graphData[1].val += authorData[i].fixes;
+      featsFixesGraphData[0].val += authorData[i].feats;
+      featsFixesGraphData[1].val += authorData[i].fixes;
+      additionsDeletionsGraphData[0].val += authorData[i].additions;
+      additionsDeletionsGraphData[1].val += authorData[i].deletions;
     }
   }
   useEffect(() => {
     getAllCommitsFromAPI().then((res) => {
       if (res) {
+        console.log(res);
         setAuthorData(parse(res));
       }
     });
   }, []);
 
   return (
-    <PageContainer title="Feats vs Fixes of contributers">
+    <PageContainer title="Commit statistics">
       {authorData.map((m, i) => {
         if (m.feats || m.fixes) {
           return (
@@ -90,7 +99,8 @@ export default function FeatsVsFixesPage() {
         }
       })}
 
-      <ChartPie data={graphData} title={'feats vs fixes'} legend />
+      <ChartPie data={featsFixesGraphData} title={'feats vs fixes'} legend />
+      <ChartPie data={additionsDeletionsGraphData} title={'additions vs deletions'} legend />
     </PageContainer>
   );
 }
