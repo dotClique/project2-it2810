@@ -5,6 +5,16 @@ export type APIResponse<ResponseType> = {
   data: ResponseType & ErrorResponse;
 };
 
+export type BarDataItem = {
+  barValue: number;
+  barLabel: string;
+};
+
+export type PieDataItem = {
+  commitType: string;
+  val: number;
+};
+
 export type ErrorResponse = {
   errorMsg?: string;
 };
