@@ -48,7 +48,7 @@ export default function FeatsVsFixesPage() {
   return (
     <PageContainer title="Feats vs Fixes">
       <div>This is Pie Chart</div>
-      <ChartPie data={graphData} title={'feats vs fixes'} />
+      <ChartPie data={graphData} title={'feats vs fixes'} legend />
     </PageContainer>
   );
 }
