@@ -60,8 +60,8 @@ export default function NavBar(props: MenuProps) {
                 open={menuOpen}
                 onClose={handleClose}
               >
-                <Link underline="none" href={'/pie'}>
-                  <MenuItem className={classes.menuItem}>Pie</MenuItem>
+                <Link underline="none" href={'/commits'}>
+                  <MenuItem className={classes.menuItem}>Commits</MenuItem>
                 </Link>
                 <Link underline="none" href={'/bar'}>
                   <MenuItem className={classes.menuItem}>Bar</MenuItem>
@@ -70,7 +70,7 @@ export default function NavBar(props: MenuProps) {
             </>
           ) : (
             <div className={classes.linkContainer}>
-              <IconLink url={'pie'} title={'Pie!'} icon={<ChartPieIcon />} />
+              <IconLink url={'commits'} title={'Commits'} icon={<ChartPieIcon />} />
               <IconLink url={'bar'} title={'Bar'} icon={<ChartBarIcon />} />
             </div>
           )}

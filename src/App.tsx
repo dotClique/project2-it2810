@@ -4,8 +4,8 @@ import './App.css';
 import NavBar from './components/NavBar';
 import { backgroundTheme } from './helpers/themes';
 import Home from './pages/Home/index';
-import PieChartPage from './pages/PieChartPage';
 import BarChartPage from './pages/BarChartPage';
+import FeatsVsFixesPage from './pages/FeatsVsFixesPage';
 
 function App() {
   return (
@@ -17,8 +17,8 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path={'/pie'}>
-              <PieChartPage />
+            <Route exact path={'/commits'}>
+              <FeatsVsFixesPage />
             </Route>
             <Route exact path={'/bar'}>
               <BarChartPage />
