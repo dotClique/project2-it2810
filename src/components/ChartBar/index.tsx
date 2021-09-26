@@ -1,20 +1,16 @@
-import { Component } from 'react';
+import { Animation, ValueScale } from '@devexpress/dx-react-chart';
 import {
-  ValueAxis,
+  ArgumentAxis,
   BarSeries,
   Chart,
   Title,
-  ArgumentAxis,
+  ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';
-import { Animation, ValueScale } from '@devexpress/dx-react-chart';
+import { Component } from 'react';
+import { BarDataItem } from '../../helpers/types';
 import ChartContainer from '../ChartContainer';
 
-interface IDataItem {
-  barValue: number;
-  barLabel: string;
-}
-
-export default class ChartBar extends Component<{ data: IDataItem[]; title: string }, {}> {
+export default class ChartBar extends Component<{ data: BarDataItem[]; title: string }, {}> {
   render(): React.ReactNode {
     return (
       <ChartContainer>
