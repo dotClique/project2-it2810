@@ -24,4 +24,5 @@ eslint:
 prettier:
   stage: lint
   script:
+    - npm i prettier
     - npm run-script prettier

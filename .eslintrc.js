@@ -5,6 +5,11 @@ module.exports = {
     amd: true,
     node: true,
   },
+  settings: {
+    react: {
+      version: 'detect'
+    }
+},
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
