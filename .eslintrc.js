@@ -7,9 +7,9 @@ module.exports = {
   },
   settings: {
     react: {
-      version: 'detect'
-    }
-},
+      version: 'detect',
+    },
+  },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
