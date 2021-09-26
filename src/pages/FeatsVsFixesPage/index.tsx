@@ -51,7 +51,6 @@ export default function FeatsVsFixesPage() {
     { name: string; num: number; feats: number; fixes: number; active: boolean }[]
   >([]);
 
-  console.log(authorData);
   let graphData: Array<{ commitType: string; val: number }> = [
     { commitType: 'feat', val: 0 },
     { commitType: 'fix', val: 0 },
@@ -76,18 +75,17 @@ export default function FeatsVsFixesPage() {
       {authorData.map((m, i) => {
         if (m.feats || m.fixes) {
           return (
-            <>
+            <div key={i}>
               Person {i + 1}
               <Checkbox
                 checked={m.active}
-                key={i}
                 onChange={() => {
                   const temp_list = [...authorData];
                   temp_list[i].active = !temp_list[i].active;
                   setAuthorData(temp_list);
                 }}
               />
-            </>
+            </div>
           );
         }
       })}
