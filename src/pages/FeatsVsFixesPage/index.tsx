@@ -13,55 +13,83 @@ function commit_type(commitMessage: string): 'feat' | 'fix' | 'else' {
 }
 
 function parse(commits: Array<commit>) {
-  let sum_feats = 0;
-  let sum_fixes = 0;
+  const authors: { name: string; num: number; feats: number; fixes: number; active: boolean }[] =
+    [];
   for (let i = 0; i < commits.length; i++) {
+    const author = commits[i].author_email;
+    let author_exists = false;
     const c_type = commit_type(commits[i].message);
-    switch (c_type) {
-      case 'feat':
-        sum_feats++;
-        break;
-      case 'fix':
-        sum_fixes++;
-        break;
+    for (let j = 0; j < authors.length; j++) {
+      if (authors[j].name == author) {
+        author_exists = true;
+        authors[j].num += 1;
+        switch (c_type) {
+          case 'feat':
+            authors[j].feats++;
+            break;
+          case 'fix':
+            authors[j].fixes++;
+            break;
+        }
+      }
+    }
+    if (!author_exists) {
+      authors.push({
+        name: author,
+        num: 1,
+        feats: c_type == 'feat' ? 1 : 0,
+        fixes: c_type == 'fix' ? 1 : 0,
+        active: true,
+      });
     }
   }
-  return [
-    { commitType: 'feat', val: sum_feats },
-    { commitType: 'fix', val: sum_fixes },
-  ];
+  return authors;
 }
 
 export default function FeatsVsFixesPage() {
-  const [graphData, setGraphData] = useState<Array<{ commitType: string; val: number }>>([
-    { commitType: 'feat', val: 1 },
-    { commitType: 'fix', val: 1 },
-  ]);
+  const [authorData, setAuthorData] = useState<
+    { name: string; num: number; feats: number; fixes: number; active: boolean }[]
+  >([]);
 
-  const [checked, setChecked] = useState<Array<boolean>>([false, true, false]);
+  console.log(authorData);
+  let graphData: Array<{ commitType: string; val: number }> = [
+    { commitType: 'feat', val: 0 },
+    { commitType: 'fix', val: 0 },
+  ];
+
+  for (let i = 0; i < authorData.length; i++) {
+    if (authorData[i].active) {
+      graphData[0].val += authorData[i].feats;
+      graphData[1].val += authorData[i].fixes;
+    }
+  }
   useEffect(() => {
     getAllCommitsFromAPI().then((res) => {
       if (res) {
-        setGraphData(parse(res));
+        setAuthorData(parse(res));
       }
     });
   }, []);
 
   return (
-    <PageContainer title="Feats vs Fixes">
-      <div>This is Pie Chart</div>
-      {checked.map((m, i) => {
-        return (
-          <Checkbox
-            checked={m}
-            key={i}
-            onChange={() => {
-              const temp_list = [...checked];
-              temp_list[i] = !temp_list[i];
-              setChecked(temp_list);
-            }}
-          />
-        );
+    <PageContainer title="Feats vs Fixes of contributers">
+      {authorData.map((m, i) => {
+        if (m.feats || m.fixes) {
+          return (
+            <>
+              Person {i + 1}
+              <Checkbox
+                checked={m.active}
+                key={i}
+                onChange={() => {
+                  const temp_list = [...authorData];
+                  temp_list[i].active = !temp_list[i].active;
+                  setAuthorData(temp_list);
+                }}
+              />
+            </>
+          );
+        }
       })}
 
       <ChartPie data={graphData} title={'feats vs fixes'} legend />
