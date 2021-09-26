@@ -3,6 +3,7 @@ import ChartPie from '../../components/ChartPie';
 import { getAllCommitsFromAPI } from '../../helpers/api-calls';
 import { useEffect, useState } from 'react';
 import { commit } from '../../helpers/types';
+import { Checkbox } from '@material-ui/core';
 
 function commit_type(commitMessage: string): 'feat' | 'fix' | 'else' {
   const generaliazedCommitMessage = commitMessage.toLowerCase().trim();
@@ -37,6 +38,7 @@ export default function FeatsVsFixesPage() {
     { commitType: 'fix', val: 1 },
   ]);
 
+  const [checked, setChecked] = useState<Array<boolean>>([false, true, false]);
   useEffect(() => {
     getAllCommitsFromAPI().then((res) => {
       if (res) {
@@ -48,6 +50,20 @@ export default function FeatsVsFixesPage() {
   return (
     <PageContainer title="Feats vs Fixes">
       <div>This is Pie Chart</div>
+      {checked.map((m, i) => {
+        return (
+          <Checkbox
+            checked={m}
+            key={i}
+            onChange={() => {
+              const temp_list = [...checked];
+              temp_list[i] = !temp_list[i];
+              setChecked(temp_list);
+            }}
+          />
+        );
+      })}
+
       <ChartPie data={graphData} title={'feats vs fixes'} legend />
     </PageContainer>
   );
