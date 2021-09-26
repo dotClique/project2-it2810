@@ -1,5 +1,5 @@
 import { PROJECT_ID } from './constants';
-import { APIRequestMethods, APIResponse, Branch, Commit } from './types';
+import { APIRequestMethods, APIResponse, Branch, Commit, Issue } from './types';
 import { getEnv } from './utils';
 
 /**
@@ -30,8 +30,8 @@ export const fromAPI = async (
   return { status: res.status, ok: res.ok, headers: res.headers, data };
 };
 
-export const getIssueBoardsFromAPI = async () => {
-  return fromAPI('/boards', 'GET');
+export const getIssuesFromAPI = async (): Promise<APIResponse<Issue[]>> => {
+  return fromAPI('/issues', 'GET');
 };
 
 const getCommitsFromAPIRecursive = async (data: Array<Commit>, page: number) => {

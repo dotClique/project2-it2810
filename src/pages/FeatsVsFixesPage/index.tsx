@@ -2,12 +2,12 @@ import PageContainer from '../../components/PageContainer/index';
 import ChartPie from '../../components/ChartPie';
 import { getAllCommitsFromAPI } from '../../helpers/api-calls';
 import { useEffect, useState } from 'react';
-import { Author } from '../../helpers/types';
+import { CommitAuthor } from '../../helpers/types';
 import { Checkbox } from '@material-ui/core';
 import { parseCommitData } from './utils';
 
 export default function FeatsVsFixesPage() {
-  const [authorData, setAuthorData] = useState<Author[]>([]);
+  const [authorData, setAuthorData] = useState<CommitAuthor[]>([]);
 
   let featsFixesGraphData: Array<{ commitType: string; val: number }> = [
     { commitType: 'feat', val: 0 },
