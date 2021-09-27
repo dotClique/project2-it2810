@@ -2,6 +2,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import CommonLogic from './components/CommonLogic/index';
 import NavBar from './components/NavBar';
 import { OpenSettingsContext } from './helpers/context';
 import { backgroundTheme } from './helpers/themes';
@@ -20,6 +21,7 @@ function App() {
           <NavBar title="CoolWebsiteName" />
           <SettingsPage open={openSettings} onClose={() => setOpenSettings(false)} />
           <Router>
+            <CommonLogic />
             <Switch>
               <Route exact path="/">
                 <Home />
