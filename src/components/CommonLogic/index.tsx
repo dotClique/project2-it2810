@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router';
-import { useLastViewedChart, useSessionStorage } from '../../helpers/hooks';
+import { useSessionStorage } from '../../helpers/hooks';
+import { useLastViewedChart } from './utils';
 
 /**
  * Component to handle all common logic that concerns all pages.
  */
 export default function CommonLogic() {
   const lastUrl = useLastViewedChart();
-  const [isSessionStart, setIsSessionStart] = useSessionStorage<number>('isSessionStart', 1);
+  const [isSessionStart, setIsSessionStart] = useSessionStorage<boolean>('isSessionStart', true);
   const history = useHistory();
   const location = useLocation();
 
@@ -16,7 +17,7 @@ export default function CommonLogic() {
     if (isSessionStart && lastUrl !== '/' && location.pathname === '/') {
       history.push(lastUrl);
     }
-    setIsSessionStart(0);
+    setIsSessionStart(false);
   }, []);
   return <></>;
 }

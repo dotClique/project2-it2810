@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, useCallback, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
 type StorageObject = typeof window.localStorage | typeof window.sessionStorage;
-// Taken from https://github.com/WebDevSimplified/useful-custom-react-hooks/blob/main/src/8-useStorage/useStorage.js
 type PossibleValues = string | number | boolean;
+// useStorage, useLocalStorage and useSessionStorage is taken from:
+// https://github.com/WebDevSimplified/useful-custom-react-hooks/blob/main/src/8-useStorage/useStorage.js
 /**
  * Hook to handle operations with localStorage
  * @param key The key of the object in the storageObject
@@ -11,7 +11,7 @@ type PossibleValues = string | number | boolean;
  * @param storageObject Either localStorage or sessionStorage
  * @returns An array of [value, setValue, remove]
  */
-export function useStorage<ValueType extends PossibleValues>(
+function useStorage<ValueType extends PossibleValues>(
   key: string,
   defaultValue: ValueType,
   storageObject: StorageObject,
@@ -59,19 +59,3 @@ export function useSessionStorage<ValueType extends PossibleValues>(
 ) {
   return useStorage(key, defaultValue, window.sessionStorage);
 }
-
-/**
- * Hook to handle updating localStorage with the last visited url.
- * @returns The last visited url (being also the current url)
- */
-export const useLastViewedChart = () => {
-  const defaultUrl = '/';
-  const loc = useLocation();
-  const [lastUrl, setLastUrl] = useLocalStorage<string>('lastUrl', defaultUrl);
-
-  useEffect(() => {
-    setLastUrl(loc.pathname);
-  }, [loc.pathname]);
-
-  return lastUrl ?? defaultUrl;
-};
