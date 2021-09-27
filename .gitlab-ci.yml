@@ -1,0 +1,28 @@
+image: node
+
+stages:
+  - build
+  - lint
+
+build site:
+  image: node
+  stage: build
+  script:
+    - npm ci --progress=false
+    - npm run-script build
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist
+
+eslint:
+  stage: lint
+  script:
+    - npm i eslint
+    - npm run-script lint
+
+prettier:
+  stage: lint
+  script:
+    - npm i prettier
+    - npm run-script prettier
