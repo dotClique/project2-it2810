@@ -1,5 +1,5 @@
 import { PROJECT_ID } from './constants';
-import { APIRequestMethods, APIResponse } from './types';
+import { APIRequestMethods, APIResponse, Branch } from './types';
 import { getEnv } from './utils';
 
 /**
@@ -27,9 +27,29 @@ export const fromAPI = async (
     },
   );
   const data = await res.json();
-  return { status: res.status, ok: res.ok, data };
+  return { status: res.status, ok: res.ok, headers: res.headers, data };
 };
 
 export const getIssueBoardsFromAPI = async () => {
   return fromAPI('/boards', 'GET');
+};
+
+const getBranchesFromApi = async (data: Array<Branch>, page: number) => {
+  return fromAPI('/repository/branches', 'GET').then(async (res) => {
+    if (res.ok) {
+      data = data.concat(res.data);
+      if (res.headers.get('x-next-page')) {
+        await getBranchesFromApi(data, page + 1).then((res_data) => {
+          return res_data;
+        });
+      } else {
+        return data;
+      }
+    }
+  });
+};
+
+export const getAllBranchesFromAPI = async () => {
+  let data: Branch[] = [];
+  return getBranchesFromApi(data, 1);
 };

@@ -9,6 +9,7 @@ import BarChartPage from './pages/BarChartPage';
 import Home from './pages/Home/index';
 import PieChartPage from './pages/PieChartPage';
 import SettingsPage from './pages/SettingsPage/index';
+import CommitsPerBranchPage from './pages/CommitsPerBranch';
 
 function App() {
   const [openSettings, setOpenSettings] = useState(false);
@@ -28,6 +29,9 @@ function App() {
               </Route>
               <Route exact path={'/bar'}>
                 <BarChartPage />
+              </Route>
+              <Route exact path={'/branches'}>
+                <CommitsPerBranchPage />
               </Route>
             </Switch>
           </Router>
