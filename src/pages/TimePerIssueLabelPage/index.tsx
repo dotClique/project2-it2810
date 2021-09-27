@@ -10,8 +10,8 @@ import {
   taskDescriptionLabels,
 } from '../../helpers/constants';
 import { BarDataItem, Issue } from '../../helpers/types';
-import { avgTimePerIssueLabel } from '../../helpers/utils';
 import useStyles from './styles';
+import { avgTimePerIssueLabel } from './utils';
 
 export default function TimePerIssueLabelPage() {
   const [allIssueData, setAllIssueData] = useState<Issue[] | null>(null);
