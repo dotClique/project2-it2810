@@ -3,7 +3,7 @@ export const PROJECT_ID = 11758;
 /**
  * The labels used by the group in GitLab
  */
-export enum LABELS {
+export enum Label {
   BROWSER_STORAGE = 'Browser storage',
   HARD = 'Hard',
   DOING = 'Doing',
@@ -21,21 +21,21 @@ export enum LABELS {
 
 // Categorizing the labels
 
-export const allLabels = Object.values(LABELS);
+export const allLabels = Object.values(Label);
 
 export const difficultyLabels = [
-  LABELS.GOOD_FIRST,
-  LABELS.EASY,
-  LABELS.HARD,
-  LABELS.POSSIBLY_IMPOSSIBLE,
+  Label.GOOD_FIRST,
+  Label.EASY,
+  Label.HARD,
+  Label.POSSIBLY_IMPOSSIBLE,
 ];
 export const taskDescriptionLabels = [
-  LABELS.API,
-  LABELS.BROWSER_STORAGE,
-  LABELS.DEV_OPS,
-  LABELS.DOC,
-  LABELS.SET_UP,
-  LABELS.TESTING,
+  Label.API,
+  Label.BROWSER_STORAGE,
+  Label.DEV_OPS,
+  Label.DOC,
+  Label.SET_UP,
+  Label.TESTING,
 ];
 export const otherLabels = allLabels.filter(
   (el) => difficultyLabels.indexOf(el) == -1 && taskDescriptionLabels.indexOf(el) == -1,

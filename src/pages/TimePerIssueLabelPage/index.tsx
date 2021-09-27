@@ -5,7 +5,7 @@ import PageContainer from '../../components/PageContainer';
 import { getIssuesFromAPI } from '../../helpers/api-calls';
 import {
   difficultyLabels,
-  LABELS,
+  Label,
   otherLabels,
   taskDescriptionLabels,
 } from '../../helpers/constants';
@@ -16,7 +16,7 @@ import { avgTimePerIssueLabel } from './utils';
 export default function TimePerIssueLabelPage() {
   const [allIssueData, setAllIssueData] = useState<Issue[] | null>(null);
   const [data, setData] = useState<BarDataItem[] | null>(null);
-  const [selected, setSelected] = useState<LABELS[]>(difficultyLabels);
+  const [selected, setSelected] = useState<Label[]>(difficultyLabels);
   const classes = useStyles();
 
   // On page load, get the issues from the API and load it into a state.
@@ -53,7 +53,7 @@ export default function TimePerIssueLabelPage() {
             id="demo-simple-select"
             value={selected}
             onChange={(e) => {
-              const newValue = e.target.value as LABELS[];
+              const newValue = e.target.value as Label[];
               setSelected(newValue);
             }}
           >
