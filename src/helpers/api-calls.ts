@@ -13,8 +13,8 @@ import { getEnv } from './utils';
 export const fromAPI = async (
   urlPath: string,
   method: APIRequestMethods,
-  body?: any,
-): Promise<APIResponse<any>> => {
+  body?: unknown,
+): Promise<APIResponse<unknown>> => {
   const res = await fetch(
     `https://gitlab.stud.idi.ntnu.no/api/v4/projects/${PROJECT_ID}${urlPath}`,
     {
@@ -31,7 +31,7 @@ export const fromAPI = async (
 };
 
 export const getIssuesFromAPI = async (): Promise<APIResponse<Issue[]>> => {
-  return fromAPI('/issues', 'GET');
+  return fromAPI('/issues', 'GET') as Promise<APIResponse<Issue[]>>;
 };
 
 const getCommitsFromAPIRecursive = async (data: Array<Commit>, page: number) => {

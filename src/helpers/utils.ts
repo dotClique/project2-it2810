@@ -1,3 +1,4 @@
+import { LABELS } from './constants';
 import { BarDataItem, Issue } from './types';
 
 /**
@@ -12,30 +13,26 @@ export const getEnv = (envName: string): string => {
   return variable;
 };
 
+type LabelData = {
+  label: string;
+  totalTime: number; // Time in seconds from start to close
+  issueCount: number;
+};
+
 /**
  * Gets the average time used per issue label.
  * @param issues The issues to do the calculation on.
  * @returns A list of BarDataItems to be used to show in the ChartBar component.
  */
-export const avgTimePerIssueLabel = (issues: Issue[]): BarDataItem[] => {
-  // Find the labels
-  type LabelData = {
-    label: string;
-    totalTime: number; // Time in seconds from start to close
-    issueCount: number;
-  };
-  const labels: string[] = [];
+export const avgTimePerIssueLabel = (issues: Issue[], labels: LABELS[]): BarDataItem[] => {
   const labelDataList: LabelData[] = [];
+  // Intiate the labelDataList with those labels
+  labels.forEach((label) => {
+    labelDataList.push({ label, totalTime: 0, issueCount: 0 });
+  });
+
+  // Add the time from the issue was created to it was closed (if it is closed)
   issues.forEach((issue) => {
-    // Add the labels in the issue to the labels list if they are not already added
-    // Also intiate the labelDataList with those labels
-    issue.labels.forEach((thisLabel) => {
-      if (labels.indexOf(thisLabel) === -1) {
-        labels.push(thisLabel);
-        labelDataList.push({ label: thisLabel, totalTime: 0, issueCount: 0 });
-      }
-    });
-    // Add the time from the issue was created to it was closed (if it is closed)
     if (issue.closed_at == null) return;
     const start = new Date(issue.created_at);
     const end = new Date(issue.closed_at);
@@ -52,7 +49,7 @@ export const avgTimePerIssueLabel = (issues: Issue[]): BarDataItem[] => {
   const barDataItems: BarDataItem[] = labelDataList.map((labelData) => {
     return {
       barLabel: labelData.label,
-      barValue: labelData.totalTime / labelData.issueCount,
+      barValue: labelData.issueCount === 0 ? 0 : labelData.totalTime / labelData.issueCount,
     };
   });
   return barDataItems;

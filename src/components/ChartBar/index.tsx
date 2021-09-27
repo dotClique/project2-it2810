@@ -10,7 +10,12 @@ import { Component } from 'react';
 import { BarDataItem } from '../../helpers/types';
 import ChartContainer from '../ChartContainer';
 
-export default class ChartBar extends Component<{ data: BarDataItem[]; title: string }, {}> {
+type CharBarProps = {
+  data: BarDataItem[];
+  title: string;
+};
+
+export default class ChartBar extends Component<CharBarProps> {
   render(): React.ReactNode {
     return (
       <ChartContainer>
