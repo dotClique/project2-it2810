@@ -60,6 +60,10 @@ export function useSessionStorage<ValueType extends PossibleValues>(
   return useStorage(key, defaultValue, window.sessionStorage);
 }
 
+/**
+ * Hook to handle updating localStorage with the last visited url.
+ * @returns The last visited url (being also the current url)
+ */
 export const useLastViewedChart = () => {
   const defaultUrl = '/';
   const loc = useLocation();
