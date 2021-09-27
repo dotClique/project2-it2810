@@ -7,7 +7,7 @@ import {
   difficultyLabels,
   Label,
   otherLabels,
-  taskDescriptionLabels,
+  techDescriptionLabels,
 } from '../../helpers/constants';
 import { BarDataItem, Issue } from '../../helpers/types';
 import useStyles from './styles';
@@ -60,8 +60,8 @@ export default function TimePerIssueLabelPage() {
             <MenuItem key={JSON.stringify(difficultyLabels)} value={difficultyLabels}>
               <div>Difficulty</div>
             </MenuItem>
-            <MenuItem key={JSON.stringify(taskDescriptionLabels)} value={taskDescriptionLabels}>
-              <div>Task Description</div>
+            <MenuItem key={JSON.stringify(techDescriptionLabels)} value={techDescriptionLabels}>
+              <div>Tech Description</div>
             </MenuItem>
             <MenuItem key={JSON.stringify(otherLabels)} value={otherLabels}>
               <div>Other</div>

@@ -6,6 +6,7 @@ export const PROJECT_ID = 11758;
 export enum Label {
   BROWSER_STORAGE = 'Browser storage',
   HARD = 'Hard',
+  DOC = 'Documentation',
   DOING = 'Doing',
   IMPORTANT = 'Important',
   API = 'API',
@@ -15,7 +16,6 @@ export enum Label {
   SET_UP = 'Set-up',
   TESTING = 'Testing',
   DEV_OPS = 'DevOps',
-  DOC = 'Documentation',
   PLANNING = 'Planning',
 }
 
@@ -29,14 +29,12 @@ export const difficultyLabels = [
   Label.HARD,
   Label.POSSIBLY_IMPOSSIBLE,
 ];
-export const taskDescriptionLabels = [
+export const techDescriptionLabels = [
   Label.API,
   Label.BROWSER_STORAGE,
   Label.DEV_OPS,
-  Label.DOC,
-  Label.SET_UP,
   Label.TESTING,
 ];
 export const otherLabels = allLabels.filter(
-  (el) => difficultyLabels.indexOf(el) == -1 && taskDescriptionLabels.indexOf(el) == -1,
+  (el) => difficultyLabels.indexOf(el) == -1 && techDescriptionLabels.indexOf(el) == -1,
 );
