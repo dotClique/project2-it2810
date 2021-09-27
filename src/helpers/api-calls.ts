@@ -55,3 +55,23 @@ export const getAllCommitsFromAPI = async () => {
   let data: Commit[] = [];
   return getCommitsFromAPIRecursive(data, 1);
 };
+
+const getBranchesFromApi = async (data: Array<Branch>, page: number) => {
+  return fromAPI('/repository/branches', 'GET').then(async (res) => {
+    if (res.ok) {
+      data = data.concat(res.data);
+      if (res.headers.get('x-next-page')) {
+        await getBranchesFromApi(data, page + 1).then((res_data) => {
+          return res_data;
+        });
+      } else {
+        return data;
+      }
+    }
+  });
+};
+
+export const getAllBranchesFromAPI = async () => {
+  let data: Branch[] = [];
+  return getBranchesFromApi(data, 1);
+};

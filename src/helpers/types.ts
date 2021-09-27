@@ -41,3 +41,12 @@ export type Author = {
   additions: number;
   deletions: number;
 };
+export type Branch = {
+  name: string;
+  merged: boolean;
+  default: boolean;
+  developers_can_push: boolean;
+  can_push: true;
+  web_url: string;
+  commit: commit;
+};
