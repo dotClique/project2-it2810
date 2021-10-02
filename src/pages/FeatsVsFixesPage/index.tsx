@@ -5,10 +5,12 @@ import { useEffect, useState } from 'react';
 import { CommitAuthor } from '../../helpers/types';
 import { Checkbox } from '@material-ui/core';
 import { parseCommitData } from './utils';
+import { useStyles } from './styles';
 
 export default function FeatsVsFixesPage() {
   const [authorData, setAuthorData] = useState<CommitAuthor[]>([]);
 
+  const classes = useStyles();
   const featsFixesGraphData: Array<{ commitType: string; val: number }> = [
     { commitType: 'feat', val: 0 },
     { commitType: 'fix', val: 0 },
@@ -47,6 +49,7 @@ export default function FeatsVsFixesPage() {
             <div key={i}>
               Person {i + 1}
               <Checkbox
+                className={classes.checkbox}
                 checked={m.active}
                 onChange={() => {
                   const temp_list = [...authorData];
