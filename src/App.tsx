@@ -18,10 +18,9 @@ function App() {
   const [theme, setTheme] = useState<Theme>(themes.light);
   useEffect(() => {
     // Load the todos on mount
-    const storageString = localStorage.getItem('theme');
+    const storageString = localStorage.getItem('theme') as keyof typeof themes;
     if (storageString) {
       if (Object.prototype.hasOwnProperty.call(themes, storageString)) {
-        // @ts-ignore
         setTheme(themes[storageString]);
       }
     }
@@ -36,7 +35,7 @@ function App() {
             setTheme={setTheme}
           />
           <NavBar title="CoolWebsiteName" />
-           <Router>
+          <Router>
             <CommonLogic />
             <Switch>
               <Route exact path="/">
