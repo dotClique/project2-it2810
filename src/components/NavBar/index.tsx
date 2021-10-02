@@ -1,5 +1,5 @@
 import { ChartBarIcon, ChartPieIcon, CogIcon } from '@heroicons/react/outline';
-import { MenuIcon } from '@heroicons/react/solid';
+import { MenuIcon, ShareIcon } from '@heroicons/react/solid';
 import {
   AppBar,
   IconButton,
@@ -68,6 +68,9 @@ export default function NavBar(props: MenuProps) {
                 <Link underline="none" href={'/bar'}>
                   <MenuItem className={classes.menuItem}>Bar</MenuItem>
                 </Link>
+                <Link underline="none" href={'/branches'}>
+                  <MenuItem className={classes.menuItem}>Branches</MenuItem>
+                </Link>
                 <Link underline="none" href={'/timeperissuelabel'}>
                   <MenuItem className={classes.menuItem}>Issue-label</MenuItem>
                 </Link>
@@ -81,6 +84,7 @@ export default function NavBar(props: MenuProps) {
               <IconLink url={'commits'} title={'Commits'} icon={<ChartPieIcon />} />
               <IconLink url={'bar'} title={'Bar'} icon={<ChartBarIcon />} />
               <IconLink url={'timeperissuelabel'} title={'Issue-label'} icon={<ChartBarIcon />} />
+              <IconLink url={'branches'} title={'Branches'} icon={<ShareIcon />} />
               <IconLink
                 title={'settings'}
                 icon={<CogIcon />}

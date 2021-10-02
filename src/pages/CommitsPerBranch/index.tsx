@@ -3,7 +3,7 @@ import ChartBar from '../../components/ChartBar';
 import { getAllBranchesFromAPI, getAllCommitsByBranchFromAPI } from '../../helpers/api-calls';
 import { useEffect, useState } from 'react';
 import { Commit } from '../../helpers/types';
-import { Checkbox } from '@material-ui/core';
+import { Switch } from '@material-ui/core/';
 
 export default function CommitsPerBranchPage() {
   const [data, setData] = useState<Array<{ barLabel: string; barValue: number }> | null>(null);
@@ -57,7 +57,8 @@ export default function CommitsPerBranchPage() {
             if (m.barLabel || m.barValue) {
               return (
                 <div key={i}>
-                  <Checkbox
+                  <Switch
+                    // @ts-ignore
                     checked={activeBranch.get(m.barLabel)}
                     onChange={() => {
                       activeBranch.set(m.barLabel, !activeBranch.get(m.barLabel));
