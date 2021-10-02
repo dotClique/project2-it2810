@@ -1,5 +1,5 @@
 import { PROJECT_ID } from './constants';
-import { APIRequestMethods, APIResponse, Branch } from './types';
+import { APIRequestMethods, APIResponse, Branch, commit } from './types';
 import { getEnv } from './utils';
 
 /**
@@ -47,6 +47,29 @@ const getBranchesFromApi = async (data: Array<Branch>, page: number) => {
       }
     }
   });
+};
+
+const getCommitByBranchFromApi = async (data: Array<commit>, page: number, branchName: string) => {
+  return fromAPI(
+    '/repository/commits?per_page=101000&page=' + page + '&ref_name=' + branchName,
+    'GET',
+  ).then(async (res) => {
+    if (res.ok) {
+      data = data.concat(res.data);
+      if (res.headers.get('x-next-page') > page) {
+        await getCommitByBranchFromApi(data, page + 1, branchName).then((res_data) => {
+          return res_data;
+        });
+      } else {
+        return data;
+      }
+    }
+  });
+};
+
+export const getAllCommitsByBranchFromAPI = async (branchName: string) => {
+  let data: commit[] = [];
+  return getCommitByBranchFromApi(data, 1, branchName);
 };
 
 export const getAllBranchesFromAPI = async () => {
