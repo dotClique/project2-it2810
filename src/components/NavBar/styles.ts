@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) =>
       color: theme.palette.secondary.contrastText,
     },
     menuItem: {
-      color: theme.palette.secondary.main,
+      color: 'black',
     },
     toolBar: {
       display: 'flex',
