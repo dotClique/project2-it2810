@@ -12,7 +12,6 @@ import SettingsPage from './pages/SettingsPage/index';
 import FeatsVsFixesPage from './pages/FeatsVsFixesPage';
 import CommitsPerBranchPage from './pages/CommitsPerBranch';
 import TimePerIssueLabelPage from './pages/TimePerIssueLabelPage/index';
-import CommitsPerBranchPage from './pages/CommitsPerBranch';
 
 function App() {
   const [openSettings, setOpenSettings] = useState(false);

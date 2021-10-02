@@ -5,9 +5,8 @@ import {
   getAllCommitsByMergeRequestFromAPI,
 } from '../../helpers/api-calls';
 import { useEffect, useState } from 'react';
-import { Branch, Commit, MergeRequest } from '../../helpers/types';
+import { Commit } from '../../helpers/types';
 import { Switch } from '@material-ui/core/';
-import { stringify } from 'querystring';
 
 export default function CommitsPerBranchPage() {
   const [data, setData] = useState<Array<{ barLabel: string; barValue: number }> | null>(null);
