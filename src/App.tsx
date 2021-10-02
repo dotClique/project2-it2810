@@ -39,15 +39,6 @@ function App() {
               <Route exact path={'/timeperissuelabel'}>
                 <TimePerIssueLabelPage />
               </Route>
-              <Route exact path={'/mergerequests'}>
-                <CommitsPerBranchPage />
-              </Route>
-              <Route exact path={'/timeperissuelabel'}>
-                <TimePerIssueLabelPage />
-              </Route>
-              <Route exact path={'/branches'}>
-                <CommitsPerBranchPage />
-              </Route>
             </Switch>
           </Router>
         </ThemeProvider>
