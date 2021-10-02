@@ -14,12 +14,9 @@ type SettingsPageProps = {
 
 export default function SettingsPage(props: SettingsPageProps) {
   function changeTheme(event: ChangeEvent<HTMLInputElement>, value: string) {
-    localStorage.setItem('theme', value);
-    if (Object.prototype.hasOwnProperty.call(themes, value)) {
-      const theme = value as keyof typeof themes;
-      props.setTheme(themes[theme]);
-      props.setThemeName(theme);
-    }
+    const theme = value as keyof typeof themes;
+    props.setTheme(themes[theme]);
+    props.setThemeName(theme);
   }
   return (
     <Popup title="Settings" open={props.open} onClose={props.onClose} maxWidth="sm">
