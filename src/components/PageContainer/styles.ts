@@ -11,6 +11,11 @@ const useStyles = makeStyles((theme) =>
         borderRadius: '0 0 10px 10px',
       },
     },
+    background: {
+      backgroundColor: theme.palette.background.default,
+      width: '100%',
+      minHeight: '100vh',
+    },
   }),
 );
 

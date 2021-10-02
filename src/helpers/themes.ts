@@ -15,6 +15,9 @@ const lightTheme = createTheme(
         main: '#f1f6f6', // Temporary info theme
         contrastText: '#3d393e',
       },
+      background: {
+        default: '#f4fffe',
+      },
     },
   },
   { name: 'light' },
@@ -35,6 +38,9 @@ const darkTheme = createTheme(
         main: '#0e9999', // Temporary info theme
         contrastText: '#6c1c7a',
       },
+      background: {
+        default: '#070606',
+      },
     },
   },
   { name: 'dark' },
@@ -54,6 +60,9 @@ const funkTheme = createTheme(
       info: {
         main: '#941681', // Temporary info theme
         contrastText: '#e9cb14',
+      },
+      background: {
+        default: '#03801f',
       },
     },
   },

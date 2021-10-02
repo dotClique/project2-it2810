@@ -9,7 +9,7 @@ type PageContainerProps = {
 export default function PageContainer(props: PageContainerProps) {
   const style = useStyles();
   return (
-    <Grid container>
+    <Grid container className={style.background}>
       <Container className={style.main} maxWidth="md">
         {props.title ? <h3>{props.title}</h3> : false}
         {props.children}
