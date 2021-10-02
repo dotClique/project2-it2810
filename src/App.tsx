@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <OpenSettingsContext.Provider value={[openSettings, setOpenSettings]}>
         <ThemeProvider theme={backgroundTheme}>
-          <NavBar title="CoolWebsiteName" />
+          <NavBar title="Gitlab data visualization" />
           <SettingsPage open={openSettings} onClose={() => setOpenSettings(false)} />
           <Router>
             <CommonLogic />
