@@ -16,15 +16,19 @@ import { Theme } from '@material-ui/core';
 function App() {
   const [openSettings, setOpenSettings] = useState(false);
   const [theme, setTheme] = useState<Theme>(themes.light);
+  const [themeName, setThemeName] = useState<string>('light');
+
+  // Get the theme from localstorage
   useEffect(() => {
-    // Load the todos on mount
     const storageString = localStorage.getItem('theme') as keyof typeof themes;
     if (storageString) {
       if (Object.prototype.hasOwnProperty.call(themes, storageString)) {
         setTheme(themes[storageString]);
+        setThemeName(storageString);
       }
     }
   }, []);
+
   return (
     <div className="App">
       <OpenSettingsContext.Provider value={[openSettings, setOpenSettings]}>
@@ -33,6 +37,8 @@ function App() {
             open={openSettings}
             onClose={() => setOpenSettings(false)}
             setTheme={setTheme}
+            themeName={themeName}
+            setThemeName={setThemeName}
           />
           <NavBar title="CoolWebsiteName" />
           <Router>

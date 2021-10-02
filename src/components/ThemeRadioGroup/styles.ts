@@ -7,6 +7,7 @@ export const useStyles = makeStyles((theme: Theme) =>
     },
     legend: {
       color: theme.palette.primary.contrastText + '!important',
+      marginBottom: '1rem',
     },
   }),
 );

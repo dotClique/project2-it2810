@@ -8,6 +8,8 @@ type SettingsPageProps = {
   open: boolean;
   onClose: () => void;
   setTheme: (t: Theme) => void;
+  themeName: string;
+  setThemeName: (n: string) => void;
 };
 
 export default function SettingsPage(props: SettingsPageProps) {
@@ -16,12 +18,12 @@ export default function SettingsPage(props: SettingsPageProps) {
     if (Object.prototype.hasOwnProperty.call(themes, value)) {
       const theme = value as keyof typeof themes;
       props.setTheme(themes[theme]);
+      props.setThemeName(theme);
     }
   }
   return (
     <Popup title="Settings" open={props.open} onClose={props.onClose} maxWidth="sm">
-      <div>Here comes the settings page</div>
-      <ThemeRadioGroup onChange={changeTheme} />
+      <ThemeRadioGroup onChange={changeTheme} themeName={props.themeName} />
     </Popup>
   );
 }

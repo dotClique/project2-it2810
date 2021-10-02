@@ -5,6 +5,7 @@ import { themes } from '../../helpers/themes';
 
 type ThemeRadioGroupProps = {
   onChange: (event: ChangeEvent<HTMLInputElement>, value: string) => void;
+  themeName: string;
 };
 
 /**
@@ -29,6 +30,7 @@ export default function ThemeRadioGroup(props: ThemeRadioGroupProps) {
               className={classes.radio}
               key={themeName}
               value={themeName}
+              checked={themeName === props.themeName}
               label={themeName}
               control={<Radio className={classes.radio} />}
             />
