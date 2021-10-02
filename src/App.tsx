@@ -12,19 +12,17 @@ import SettingsPage from './pages/SettingsPage/index';
 import FeatsVsFixesPage from './pages/FeatsVsFixesPage';
 import TimePerIssueLabelPage from './pages/TimePerIssueLabelPage/index';
 import { Theme } from '@material-ui/core';
-import { useLocalStorageString } from './helpers/hooks';
+import { useLocalStorage } from './helpers/hooks';
 
 function App() {
   const [openSettings, setOpenSettings] = useState(false);
   const [theme, setTheme] = useState<Theme>(themes.light);
-  const [themeName, setThemeName] = useLocalStorageString<keyof typeof themes>(`theme`, 'light');
+  const [themeName, setThemeName] = useLocalStorage<keyof typeof themes>(`theme`, 'light');
 
   // Get the theme from localstorage
   useEffect(() => {
-    console.log(themeName);
     if (themeName !== undefined) {
       setTheme(themes[themeName]);
-      console.log(theme);
     }
   }, []);
 
