@@ -4,17 +4,16 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar';
 import { OpenSettingsContext } from './helpers/context';
-import { darkTheme, lightTheme } from './helpers/themes';
+import { themes } from './helpers/themes';
 import BarChartPage from './pages/BarChartPage';
 import Home from './pages/Home/index';
 import SettingsPage from './pages/SettingsPage/index';
 import FeatsVsFixesPage from './pages/FeatsVsFixesPage';
 import { Theme } from '@material-ui/core';
 
-const themes = { light: lightTheme, dark: darkTheme };
 function App() {
   const [openSettings, setOpenSettings] = useState(false);
-  const [theme, setTheme] = useState<Theme>(lightTheme);
+  const [theme, setTheme] = useState<Theme>(themes.light);
   useEffect(() => {
     // Load the todos on mount
     const storageString = localStorage.getItem('theme');

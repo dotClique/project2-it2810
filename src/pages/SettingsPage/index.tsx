@@ -1,6 +1,8 @@
 import Popup from '../../components/Popup';
-import { Button, Theme } from '@material-ui/core';
-import { lightTheme, darkTheme } from '../../helpers/themes';
+import { Theme } from '@material-ui/core';
+import { themes } from '../../helpers/themes';
+import { ChangeEvent } from 'react';
+import ThemeRadioGroup from '../../components/ThemeRadioGroup';
 
 type SettingsPageProps = {
   open: boolean;
@@ -8,21 +10,19 @@ type SettingsPageProps = {
   setTheme: (t: Theme) => void;
 };
 
-const themes = { light: lightTheme, dark: darkTheme };
 export default function SettingsPage(props: SettingsPageProps) {
-  function handleClickLight() {
-    localStorage.setItem('theme', 'light');
-    props.setTheme(themes.light);
-  }
-  function handleClickDark() {
-    localStorage.setItem('theme', 'dark');
-    props.setTheme(themes.dark);
+  function changeTheme(event: ChangeEvent<HTMLInputElement>, value: string) {
+    console.log(value);
+    localStorage.setItem('theme', value);
+    if (Object.prototype.hasOwnProperty.call(themes, value)) {
+      // @ts-ignore
+      props.setTheme(themes[value]);
+    }
   }
   return (
     <Popup title="Settings" open={props.open} onClose={props.onClose} maxWidth="sm">
       <div>Here comes the settings page</div>
-      <Button onClick={handleClickLight}>Change theme light</Button>
-      <Button onClick={handleClickDark}>Change theme dark</Button>
+      <ThemeRadioGroup onChange={changeTheme} />
     </Popup>
   );
 }
