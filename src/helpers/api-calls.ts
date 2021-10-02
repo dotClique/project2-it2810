@@ -59,7 +59,7 @@ export const getAllCommitsFromAPI = async () => {
 const getBranchesFromApi = async (data: Array<Branch>, page: number) => {
   return fromAPI('/repository/branches', 'GET').then(async (res) => {
     if (res.ok) {
-      data = data.concat(res.data);
+      data = data.concat(res.data as Array<Branch>);
       if (res.headers.get('x-next-page')) {
         await getBranchesFromApi(data, page + 1).then((res_data) => {
           return res_data;
@@ -77,8 +77,8 @@ const getCommitByBranchFromApi = async (data: Array<Commit>, page: number, branc
     'GET',
   ).then(async (res) => {
     if (res.ok) {
-      data = data.concat(res.data);
-      if (res.headers.get('x-next-page') > page) {
+      data = data.concat(res.data as Array<Commit>);
+      if (res.headers.get('x-next-page')) {
         await getCommitByBranchFromApi(data, page + 1, branchName).then((res_data) => {
           return res_data;
         });
@@ -90,11 +90,10 @@ const getCommitByBranchFromApi = async (data: Array<Commit>, page: number, branc
 };
 
 export const getAllCommitsByBranchFromAPI = async (branches: Array<Branch>) => {
-  let commitsByBranch = new Map<string, Array<Commit>>();
+  const commitsByBranch = new Map<string, Array<Commit>>();
   for (let i = 0; i < branches.length; i++) {
-    let data: Commit[] = [];
-    let something;
-    something = await getCommitByBranchFromApi(data, 1, branches[i].name);
+    const data: Commit[] = [];
+    const something = await getCommitByBranchFromApi(data, 1, branches[i].name);
     if (Array.isArray(something)) {
       commitsByBranch.set(branches[i].name, something);
     }
@@ -103,6 +102,6 @@ export const getAllCommitsByBranchFromAPI = async (branches: Array<Branch>) => {
 };
 
 export const getAllBranchesFromAPI = async () => {
-  let data: Branch[] = [];
+  const data: Branch[] = [];
   return getBranchesFromApi(data, 1);
 };

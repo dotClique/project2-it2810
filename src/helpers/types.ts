@@ -1,7 +1,6 @@
 export type APIResponse<ResponseType> = {
   status: number;
   ok: boolean;
-  headers: ResponseType;
   data: ResponseType & ErrorResponse;
   headers: Headers;
 };

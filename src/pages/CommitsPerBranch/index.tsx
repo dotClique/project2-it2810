@@ -18,7 +18,7 @@ export default function CommitsPerBranchPage() {
       if (res) {
         getAllCommitsByBranchFromAPI(res).then((res2) => {
           if (res2) {
-            let activeBranches = new Map<string, boolean>();
+            const activeBranches = new Map<string, boolean>();
             res2.forEach((value: Array<Commit>, key: string) => {
               activeBranches.set(key.slice(0, 30), true);
               if (key !== 'master') {
@@ -26,8 +26,7 @@ export default function CommitsPerBranchPage() {
                 for (let j = 0; j < value.length; j++) {
                   master.forEach((masterCommit: Commit) => {
                     if (masterCommit.id == value[j].id) {
-                      // @ts-ignore
-                      res2.get(key).splice(j, 1);
+                      (res2.get(key) as Array<Commit>).splice(j, 1);
                       j--;
                       return;
                     }
@@ -58,7 +57,6 @@ export default function CommitsPerBranchPage() {
               return (
                 <div key={i}>
                   <Switch
-                    // @ts-ignore
                     checked={activeBranch.get(m.barLabel)}
                     onChange={() => {
                       activeBranch.set(m.barLabel, !activeBranch.get(m.barLabel));
