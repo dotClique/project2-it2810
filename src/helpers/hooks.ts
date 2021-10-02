@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useCallback, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 type StorageObject = typeof window.localStorage | typeof window.sessionStorage;
 // useStorage, useLocalStorage and useSessionStorage is taken from:
@@ -14,8 +14,8 @@ function useStorage<ValueType>(
   key: string,
   defaultValue: ValueType,
   storageObject: StorageObject,
-): [ValueType | undefined, Dispatch<SetStateAction<ValueType | undefined>>, () => void] {
-  const [value, setValue] = useState<ValueType | undefined>(() => {
+): [ValueType, Dispatch<SetStateAction<ValueType>>] {
+  const [value, setValue] = useState<ValueType>(() => {
     const jsonValue = storageObject.getItem(key);
     if (jsonValue != null) return JSON.parse(jsonValue);
     return defaultValue;
@@ -26,11 +26,7 @@ function useStorage<ValueType>(
     storageObject.setItem(key, JSON.stringify(value));
   }, [key, value, storageObject]);
 
-  const remove = useCallback(() => {
-    setValue(undefined);
-  }, []);
-
-  return [value, setValue, remove];
+  return [value, setValue];
 }
 
 /**

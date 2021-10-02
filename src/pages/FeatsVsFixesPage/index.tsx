@@ -27,7 +27,7 @@ export default function FeatsVsFixesPage() {
   ];
 
   for (let i = 0; i < authorData.length; i++) {
-    if (selectedAuthors?.[i]) {
+    if (selectedAuthors[i]) {
       featsFixesGraphData[0].val += authorData[i].feats;
       featsFixesGraphData[1].val += authorData[i].fixes;
       additionsDeletionsGraphData[0].val += authorData[i].additions;
@@ -54,7 +54,7 @@ export default function FeatsVsFixesPage() {
             <div key={JSON.stringify(m)}>
               Person {i + 1}
               <Checkbox
-                checked={selectedAuthors?.[i]}
+                checked={selectedAuthors[i]}
                 onChange={() => {
                   if (!selectedAuthors) return; // selectedAuthors will never be undefined
                   const tempList = [...selectedAuthors];

@@ -37,7 +37,6 @@ export default function TimePerIssueLabelPage() {
   useEffect(() => {
     // If allIssueData or selected is null, something is not selected and or the data is not
     if (allIssueData == null) return;
-    if (selected == null) return;
 
     // Find the average time used to close an issue with one of the selected labels
     const selectedArray = JSON.parse(selected);
