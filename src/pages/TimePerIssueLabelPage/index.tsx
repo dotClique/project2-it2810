@@ -52,10 +52,11 @@ export default function TimePerIssueLabelPage() {
       </p>
       <div>
         <FormControl className={classes.dropdown}>
-          <InputLabel id="demo-simple-select-label">Showing labels</InputLabel>
+          <InputLabel>Showing labels</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
+            className={classes.select}
             value={selected}
             onChange={(e) => {
               const newValue = e.target.value as string;

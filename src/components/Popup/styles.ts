@@ -16,6 +16,7 @@ export const useStyles = makeStyles((theme: Theme) =>
     },
     dialog: {
       backgroundColor: theme.palette.primary.main,
+      color: theme.palette.primary.contrastText,
     },
   }),
 );
