@@ -9,12 +9,12 @@ import { parseCommitData } from './utils';
 export default function FeatsVsFixesPage() {
   const [authorData, setAuthorData] = useState<CommitAuthor[]>([]);
 
-  let featsFixesGraphData: Array<{ commitType: string; val: number }> = [
+  const featsFixesGraphData: Array<{ commitType: string; val: number }> = [
     { commitType: 'feat', val: 0 },
     { commitType: 'fix', val: 0 },
   ];
 
-  let additionsDeletionsGraphData: Array<{ commitType: string; val: number }> = [
+  const additionsDeletionsGraphData: Array<{ commitType: string; val: number }> = [
     { commitType: 'additions', val: 0 },
     { commitType: 'deletions', val: 0 },
   ];
@@ -30,7 +30,6 @@ export default function FeatsVsFixesPage() {
   useEffect(() => {
     getAllCommitsFromAPI().then((res) => {
       if (res) {
-        console.log(res);
         setAuthorData(parseCommitData(res));
       }
     });

@@ -1,8 +1,8 @@
 export type APIResponse<ResponseType> = {
   status: number;
   ok: boolean;
-  headers: ResponseType;
   data: ResponseType & ErrorResponse;
+  headers: Headers;
 };
 
 export type BarDataItem = {
@@ -50,7 +50,7 @@ export type CommitAuthor = {
   active: boolean;
   additions: number;
   deletions: number;
-}
+};
 
 type StateGL = 'active' | 'inactive'; // The GitLab "state" attribute option (only sure about "active", do not know if "incative" is a state)
 

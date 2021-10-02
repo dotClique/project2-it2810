@@ -38,7 +38,7 @@ const getCommitsFromAPIRecursive = async (data: Array<Commit>, page: number) => 
   return fromAPI(`/repository/commits?per_page=101000&page=${page}&with_stats=true`, 'GET').then(
     async (res) => {
       if (res.ok) {
-        data = data.concat(res.data);
+        data = data.concat(res.data as Array<Commit>);
         if (res.headers.get('x-next-page')) {
           await getCommitsFromAPIRecursive(data, page + 1).then((res_data) => {
             return res_data;
@@ -52,6 +52,6 @@ const getCommitsFromAPIRecursive = async (data: Array<Commit>, page: number) => 
 };
 
 export const getAllCommitsFromAPI = async () => {
-  let data: Commit[] = [];
+  const data: Commit[] = [];
   return getCommitsFromAPIRecursive(data, 1);
 };
