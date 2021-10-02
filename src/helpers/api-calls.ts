@@ -90,9 +90,9 @@ const getCommitByBranchFromApi = async (data: Array<Commit>, page: number, branc
 };
 
 export const getAllCommitsByBranchFromAPI = async (branches: Array<Branch>) => {
-  let commitsByBranch = new Map<string, Array<commit>>();
+  let commitsByBranch = new Map<string, Array<Commit>>();
   for (let i = 0; i < branches.length; i++) {
-    let data: commit[] = [];
+    let data: Commit[] = [];
     let something;
     something = await getCommitByBranchFromApi(data, 1, branches[i].name);
     if (Array.isArray(something)) {

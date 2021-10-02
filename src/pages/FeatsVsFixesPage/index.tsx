@@ -30,7 +30,6 @@ export default function FeatsVsFixesPage() {
   useEffect(() => {
     getAllCommitsFromAPI().then((res) => {
       if (res) {
-        console.log(res);
         setAuthorData(parseCommitData(res));
       }
     });

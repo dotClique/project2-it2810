@@ -48,5 +48,5 @@ export type Branch = {
   developers_can_push: boolean;
   can_push: true;
   web_url: string;
-  commit: commit;
+  commit: Commit;
 };
