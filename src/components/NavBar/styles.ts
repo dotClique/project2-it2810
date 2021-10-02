@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) =>
       display: 'flex',
       justifyContent: 'space-between',
     },
+    appBar: {
+      backgroundColor: theme.palette.secondary.main,
+    },
     linkContainer: {
       display: 'flex',
     },
