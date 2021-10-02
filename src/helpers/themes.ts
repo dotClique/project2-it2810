@@ -4,11 +4,11 @@ const lightTheme = createTheme(
   {
     palette: {
       primary: {
-        main: '#f1f1e9', // Temporary secondary theme
+        main: '#f8f6f3', // Temporary secondary theme
         contrastText: '#1b1f28',
       },
       secondary: {
-        main: '#342f32', // Temporary primary theme
+        main: '#1f1f1e', // Temporary primary theme
         contrastText: '#dedede',
       },
       info: {
@@ -31,12 +31,12 @@ const darkTheme = createTheme(
         contrastText: '#d4daec',
       },
       secondary: {
-        main: '#ffffff', // Temporary primary theme
-        contrastText: '#530909',
+        main: '#222020', // Temporary primary theme
+        contrastText: '#d7cdcd',
       },
       info: {
-        main: '#0e9999', // Temporary info theme
-        contrastText: '#6c1c7a',
+        main: '#323737', // Temporary info theme
+        contrastText: '#afa7b1',
       },
       background: {
         default: '#070606',
