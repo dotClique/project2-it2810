@@ -7,6 +7,7 @@ import {
 import { useEffect, useState } from 'react';
 import { Commit } from '../../helpers/types';
 import { Switch } from '@material-ui/core/';
+import useStyles from './styles';
 
 export default function CommitsPerBranchPage() {
   const [data, setData] = useState<Array<{ barLabel: string; barValue: number }> | null>(null);
@@ -15,6 +16,7 @@ export default function CommitsPerBranchPage() {
   );
   const commitsByBranch: Array<{ barLabel: string; barValue: number }> = [];
   const [activeBranch, setActiveBranch] = useState<Map<string, boolean> | null>(null);
+  const classes = useStyles();
   useEffect(() => {
     getAllMergeRequestsFromAPI().then((res) => {
       if (res) {
@@ -22,15 +24,15 @@ export default function CommitsPerBranchPage() {
           if (res2) {
             const activeBranches = new Map<string, boolean>();
             res2.forEach((value: Array<Commit>, key: number) => {
-              activeBranches.set(String(key) as string, true);
+              activeBranches.set(String(key), true);
               if (
                 !commitsByBranch.includes({
-                  barLabel: String(key) as string,
+                  barLabel: String(key),
                   barValue: value.length,
                 })
               ) {
                 commitsByBranch.push({
-                  barLabel: String(key) as string,
+                  barLabel: String(key),
                   barValue: value.length,
                 });
               }
@@ -48,7 +50,7 @@ export default function CommitsPerBranchPage() {
     <PageContainer>
       <header />
       {data && <ChartBar data={data} title={'Commits by merge request iid'} />}
-      <div>
+      <div className={classes.switchcontainer}>
         {trueData &&
           activeBranch &&
           trueData.map((m, i) => {
@@ -56,6 +58,7 @@ export default function CommitsPerBranchPage() {
               return (
                 <div key={i}>
                   <Switch
+                    className={classes.switch}
                     checked={activeBranch.get(m.barLabel)}
                     onChange={() => {
                       activeBranch.set(m.barLabel, !activeBranch.get(m.barLabel));
