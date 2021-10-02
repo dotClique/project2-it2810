@@ -1,5 +1,5 @@
 import { PROJECT_ID } from './constants';
-import { APIRequestMethods, APIResponse } from './types';
+import { APIRequestMethods, APIResponse, Commit } from './types';
 import { getEnv } from './utils';
 
 /**
@@ -27,9 +27,31 @@ export const fromAPI = async (
     },
   );
   const data = await res.json();
-  return { status: res.status, ok: res.ok, data };
+  return { status: res.status, ok: res.ok, headers: res.headers, data };
 };
 
 export const getIssueBoardsFromAPI = async () => {
   return fromAPI('/boards', 'GET');
+};
+
+const getCommitsFromAPIRecursive = async (data: Array<Commit>, page: number) => {
+  return fromAPI(`/repository/commits?per_page=101000&page=${page}&with_stats=true`, 'GET').then(
+    async (res) => {
+      if (res.ok) {
+        data = data.concat(res.data);
+        if (res.headers.get('x-next-page')) {
+          await getCommitsFromAPIRecursive(data, page + 1).then((res_data) => {
+            return res_data;
+          });
+        } else {
+          return data;
+        }
+      }
+    },
+  );
+};
+
+export const getAllCommitsFromAPI = async () => {
+  let data: Commit[] = [];
+  return getCommitsFromAPIRecursive(data, 1);
 };

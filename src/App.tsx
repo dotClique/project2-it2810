@@ -7,8 +7,8 @@ import { OpenSettingsContext } from './helpers/context';
 import { backgroundTheme } from './helpers/themes';
 import BarChartPage from './pages/BarChartPage';
 import Home from './pages/Home/index';
-import PieChartPage from './pages/PieChartPage';
 import SettingsPage from './pages/SettingsPage/index';
+import FeatsVsFixesPage from './pages/FeatsVsFixesPage';
 
 function App() {
   const [openSettings, setOpenSettings] = useState(false);
@@ -23,8 +23,8 @@ function App() {
               <Route exact path="/">
                 <Home />
               </Route>
-              <Route exact path={'/pie'}>
-                <PieChartPage />
+              <Route exact path={'/commits'}>
+                <FeatsVsFixesPage />
               </Route>
               <Route exact path={'/bar'}>
                 <BarChartPage />
