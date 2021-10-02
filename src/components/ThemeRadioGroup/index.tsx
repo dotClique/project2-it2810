@@ -9,7 +9,7 @@ type ThemeRadioGroupProps = {
 };
 
 /**
- * A component making a popup dialog with the desired format
+ * A component giving the user the choice between all the current themes
  */
 export default function ThemeRadioGroup(props: ThemeRadioGroupProps) {
   const classes = useStyles();

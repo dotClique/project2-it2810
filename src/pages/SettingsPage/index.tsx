@@ -9,7 +9,7 @@ type SettingsPageProps = {
   onClose: () => void;
   setTheme: (t: Theme) => void;
   themeName: string;
-  setThemeName: (n: string) => void;
+  setThemeName: (theme: keyof typeof themes) => void;
 };
 
 export default function SettingsPage(props: SettingsPageProps) {
