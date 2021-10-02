@@ -9,11 +9,14 @@ const useStyles = makeStyles((theme) =>
       color: theme.palette.secondary.contrastText,
     },
     menuItem: {
-      color: theme.palette.secondary.main,
+      color: 'black',
     },
     toolBar: {
       display: 'flex',
       justifyContent: 'space-between',
+    },
+    appBar: {
+      backgroundColor: theme.palette.secondary.main,
     },
     linkContainer: {
       display: 'flex',

@@ -2,9 +2,10 @@ import { XIcon } from '@heroicons/react/outline';
 import { Dialog, DialogProps } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import { useStyles } from './styles';
+import { ReactNode } from 'react';
 
 type PopupProps = {
-  children?: JSX.Element;
+  children?: ReactNode;
   open: boolean;
   onClose: () => void;
   title: string;

@@ -6,6 +6,7 @@ import { getAllCommitsFromAPI } from '../../helpers/api-calls';
 import { useSessionStorage } from '../../helpers/hooks';
 import { CommitAuthor } from '../../helpers/types';
 import { parseCommitData } from './utils';
+import { useStyles } from './styles';
 
 export default function FeatsVsFixesPage() {
   // The retrieved athor data form the api.
@@ -16,6 +17,7 @@ export default function FeatsVsFixesPage() {
     new Array(authorData.length).fill(true),
   );
 
+  const classes = useStyles();
   const featsFixesGraphData: Array<{ commitType: string; val: number }> = [
     { commitType: 'feat', val: 0 },
     { commitType: 'fix', val: 0 },
@@ -54,6 +56,7 @@ export default function FeatsVsFixesPage() {
             <div key={JSON.stringify(m)}>
               Person {i + 1}
               <Checkbox
+                className={classes.checkbox}
                 checked={selectedAuthors[i]}
                 onChange={() => {
                   if (!selectedAuthors) return; // selectedAuthors will never be undefined

@@ -16,8 +16,10 @@ function useStorage<ValueType>(
   storageObject: StorageObject,
 ): [ValueType, Dispatch<SetStateAction<ValueType>>] {
   const [value, setValue] = useState<ValueType>(() => {
-    const jsonValue = storageObject.getItem(key);
-    if (jsonValue != null) return JSON.parse(jsonValue);
+    const value = storageObject.getItem(key);
+    if (value != null) {
+      return JSON.parse(value);
+    }
     return defaultValue;
   });
 
