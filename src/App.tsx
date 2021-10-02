@@ -2,6 +2,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import CommonLogic from './components/CommonLogic/index';
 import NavBar from './components/NavBar';
 import { OpenSettingsContext } from './helpers/context';
 import { themes } from './helpers/themes';
@@ -9,6 +10,7 @@ import BarChartPage from './pages/BarChartPage';
 import Home from './pages/Home/index';
 import SettingsPage from './pages/SettingsPage/index';
 import FeatsVsFixesPage from './pages/FeatsVsFixesPage';
+import TimePerIssueLabelPage from './pages/TimePerIssueLabelPage/index';
 import { Theme } from '@material-ui/core';
 
 function App() {
@@ -34,7 +36,8 @@ function App() {
             setTheme={setTheme}
           />
           <NavBar title="CoolWebsiteName" />
-          <Router>
+           <Router>
+            <CommonLogic />
             <Switch>
               <Route exact path="/">
                 <Home />
@@ -44,6 +47,9 @@ function App() {
               </Route>
               <Route exact path={'/bar'}>
                 <BarChartPage />
+              </Route>
+              <Route exact path={'/timeperissuelabel'}>
+                <TimePerIssueLabelPage />
               </Route>
             </Switch>
           </Router>

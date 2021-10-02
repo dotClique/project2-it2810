@@ -68,6 +68,9 @@ export default function NavBar(props: MenuProps) {
                 <Link underline="none" href={'/bar'}>
                   <MenuItem className={classes.menuItem}>Bar</MenuItem>
                 </Link>
+                <Link underline="none" href={'/timeperissuelabel'}>
+                  <MenuItem className={classes.menuItem}>Issue-label</MenuItem>
+                </Link>
                 <MenuItem className={classes.menuItem} onClick={() => setOpenSettings(true)}>
                   Settings
                 </MenuItem>
@@ -77,6 +80,7 @@ export default function NavBar(props: MenuProps) {
             <div className={classes.linkContainer}>
               <IconLink url={'commits'} title={'Commits'} icon={<ChartPieIcon />} />
               <IconLink url={'bar'} title={'Bar'} icon={<ChartBarIcon />} />
+              <IconLink url={'timeperissuelabel'} title={'Issue-label'} icon={<ChartBarIcon />} />
               <IconLink
                 title={'settings'}
                 icon={<CogIcon />}
