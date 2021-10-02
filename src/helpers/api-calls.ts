@@ -1,5 +1,5 @@
 import { PROJECT_ID } from './constants';
-import { APIRequestMethods, APIResponse, Commit } from './types';
+import { APIRequestMethods, APIResponse, Commit, Issue } from './types';
 import { getEnv } from './utils';
 
 /**
@@ -13,8 +13,8 @@ import { getEnv } from './utils';
 export const fromAPI = async (
   urlPath: string,
   method: APIRequestMethods,
-  body?: any,
-): Promise<APIResponse<any>> => {
+  body?: unknown,
+): Promise<APIResponse<unknown>> => {
   const res = await fetch(
     `https://gitlab.stud.idi.ntnu.no/api/v4/projects/${PROJECT_ID}${urlPath}`,
     {
@@ -30,15 +30,15 @@ export const fromAPI = async (
   return { status: res.status, ok: res.ok, headers: res.headers, data };
 };
 
-export const getIssueBoardsFromAPI = async () => {
-  return fromAPI('/boards', 'GET');
+export const getIssuesFromAPI = async (): Promise<APIResponse<Issue[]>> => {
+  return fromAPI('/issues', 'GET') as Promise<APIResponse<Issue[]>>;
 };
 
 const getCommitsFromAPIRecursive = async (data: Array<Commit>, page: number) => {
   return fromAPI(`/repository/commits?per_page=101000&page=${page}&with_stats=true`, 'GET').then(
     async (res) => {
       if (res.ok) {
-        data = data.concat(res.data);
+        data = data.concat(res.data as Array<Commit>);
         if (res.headers.get('x-next-page')) {
           await getCommitsFromAPIRecursive(data, page + 1).then((res_data) => {
             return res_data;
@@ -52,6 +52,6 @@ const getCommitsFromAPIRecursive = async (data: Array<Commit>, page: number) => 
 };
 
 export const getAllCommitsFromAPI = async () => {
-  let data: Commit[] = [];
+  const data: Commit[] = [];
   return getCommitsFromAPIRecursive(data, 1);
 };

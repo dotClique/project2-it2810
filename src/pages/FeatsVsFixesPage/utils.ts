@@ -1,4 +1,4 @@
-import { Author, Commit } from '../../helpers/types';
+import { CommitAuthor, Commit } from '../../helpers/types';
 
 /**
  * Gets the commit type based on a commit message
@@ -17,8 +17,8 @@ function getCommitType(commitMessage: string): 'feat' | 'fix' | 'else' {
  * @param commits an array of commit
  * @returns an array of data about the different authors commits
  */
-export function parseCommitData(commits: Array<Commit>): Author[] {
-  const authors: Author[] = [];
+export function parseCommitData(commits: Array<Commit>): CommitAuthor[] {
+  const authors: CommitAuthor[] = [];
   for (let i = 0; i < commits.length; i++) {
     const author = commits[i].author_email;
     let author_exists = false;

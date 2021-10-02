@@ -1,9 +1,10 @@
-import { Chart, PieSeries, Title, Tooltip, Legend } from '@devexpress/dx-react-chart-material-ui';
-import { Animation, EventTracker, ArgumentScale } from '@devexpress/dx-react-chart';
+import { Animation, ArgumentScale, EventTracker } from '@devexpress/dx-react-chart';
+import { Chart, Legend, PieSeries, Title, Tooltip } from '@devexpress/dx-react-chart-material-ui';
+import { PieDataItem } from '../../helpers/types';
 import ChartContainer from '../ChartContainer';
 
 type ChartPieProps = {
-  data: { commitType: string; val: number }[];
+  data: PieDataItem[];
   title?: string;
   legend?: boolean;
 };
