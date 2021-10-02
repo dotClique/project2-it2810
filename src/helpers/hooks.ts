@@ -1,7 +1,6 @@
-import { Dispatch, SetStateAction, useCallback, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 type StorageObject = typeof window.localStorage | typeof window.sessionStorage;
-type PossibleValues = string | number | boolean;
 // useStorage, useLocalStorage and useSessionStorage is taken from:
 // https://github.com/WebDevSimplified/useful-custom-react-hooks/blob/main/src/8-useStorage/useStorage.js
 /**
@@ -11,12 +10,12 @@ type PossibleValues = string | number | boolean;
  * @param storageObject Either localStorage or sessionStorage
  * @returns An array of [value, setValue, remove]
  */
-function useStorage<ValueType extends PossibleValues>(
+function useStorage<ValueType>(
   key: string,
   defaultValue: ValueType,
   storageObject: StorageObject,
-): [ValueType | undefined, Dispatch<SetStateAction<ValueType | undefined>>, () => void] {
-  const [value, setValue] = useState<ValueType | undefined>(() => {
+): [ValueType, Dispatch<SetStateAction<ValueType>>] {
+  const [value, setValue] = useState<ValueType>(() => {
     const jsonValue = storageObject.getItem(key);
     if (jsonValue != null) return JSON.parse(jsonValue);
     return defaultValue;
@@ -27,11 +26,7 @@ function useStorage<ValueType extends PossibleValues>(
     storageObject.setItem(key, JSON.stringify(value));
   }, [key, value, storageObject]);
 
-  const remove = useCallback(() => {
-    setValue(undefined);
-  }, []);
-
-  return [value, setValue, remove];
+  return [value, setValue];
 }
 
 /**
@@ -40,10 +35,7 @@ function useStorage<ValueType extends PossibleValues>(
  * @param defaultValue The default value of the item in localStorage.
  * @returns An array of [value, setValue, remove]
  */
-export function useLocalStorage<ValueType extends PossibleValues>(
-  key: string,
-  defaultValue: ValueType,
-) {
+export function useLocalStorage<ValueType>(key: string, defaultValue: ValueType) {
   return useStorage(key, defaultValue, window.localStorage);
 }
 
@@ -53,9 +45,6 @@ export function useLocalStorage<ValueType extends PossibleValues>(
  * @param defaultValue The default value of the item in sessionStorage.
  * @returns An array of [value, setValue, remove]
  */
-export function useSessionStorage<ValueType extends PossibleValues>(
-  key: string,
-  defaultValue: ValueType,
-) {
+export function useSessionStorage<ValueType>(key: string, defaultValue: ValueType) {
   return useStorage(key, defaultValue, window.sessionStorage);
 }
