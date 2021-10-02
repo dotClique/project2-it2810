@@ -18,12 +18,7 @@ export default function ThemeRadioGroup(props: ThemeRadioGroupProps) {
       <FormLabel component="legend" className={classes.legend}>
         Theme
       </FormLabel>
-      <RadioGroup
-        defaultValue="female"
-        aria-label="gender"
-        name="customized-radios"
-        onChange={props.onChange}
-      >
+      <RadioGroup onChange={props.onChange}>
         {Object.keys(themes).map((themeName) => {
           return (
             <FormControlLabel
