@@ -1,4 +1,4 @@
-import { Labels } from './constants';
+import { Label } from './constants';
 import { BarDataItem, Issue } from './types';
 
 /**
@@ -24,7 +24,7 @@ type LabelData = {
  * @param issues The issues to do the calculation on.
  * @returns A list of BarDataItems to be used to show in the ChartBar component.
  */
-export const avgTimePerIssueLabel = (issues: Issue[], labels: LABELS[]): BarDataItem[] => {
+export const avgTimePerIssueLabel = (issues: Issue[], labels: Label[]): BarDataItem[] => {
   const labelDataList: LabelData[] = [];
   // Intiate the labelDataList with those labels
   labels.forEach((label) => {
