@@ -67,9 +67,17 @@ const getCommitByBranchFromApi = async (data: Array<commit>, page: number, branc
   });
 };
 
-export const getAllCommitsByBranchFromAPI = async (branchName: string) => {
-  let data: commit[] = [];
-  return getCommitByBranchFromApi(data, 1, branchName);
+export const getAllCommitsByBranchFromAPI = async (branches: Array<Branch>) => {
+  let commitsByBranch = new Map<string, Array<commit>>();
+  for (let i = 0; i < branches.length; i++) {
+    let data: commit[] = [];
+    let something;
+    something = await getCommitByBranchFromApi(data, 1, branches[i].name);
+    if (Array.isArray(something)) {
+      commitsByBranch.set(branches[i].name, something);
+    }
+  }
+  return commitsByBranch;
 };
 
 export const getAllBranchesFromAPI = async () => {
