@@ -15,7 +15,6 @@ export default function CommitsPerBranchPage() {
   );
   const commitsByBranch: Array<{ barLabel: string; barValue: number }> = [];
   const [activeBranch, setActiveBranch] = useState<Map<string, boolean> | null>(null);
-
   useEffect(() => {
     getAllMergeRequestsFromAPI().then((res) => {
       if (res) {
@@ -47,7 +46,7 @@ export default function CommitsPerBranchPage() {
   }, []);
   return (
     <PageContainer>
-      <header></header>
+      <header />
       {data && <ChartBar data={data} title={'Commits by merge request iid'} />}
       <div>
         {trueData &&
