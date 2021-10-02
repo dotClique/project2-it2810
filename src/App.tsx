@@ -13,7 +13,6 @@ import FeatsVsFixesPage from './pages/FeatsVsFixesPage';
 import CommitsPerBranchPage from './pages/CommitsPerBranch';
 import TimePerIssueLabelPage from './pages/TimePerIssueLabelPage/index';
 import CommitsPerBranchPage from './pages/CommitsPerBranch';
-import TimePerIssueLabelPage from './pages/TimePerIssueLabelPage/index';
 
 function App() {
   const [openSettings, setOpenSettings] = useState(false);
@@ -41,7 +40,7 @@ function App() {
               <Route exact path={'/timeperissuelabel'}>
                 <TimePerIssueLabelPage />
               </Route>
-              <Route exact path={'/branches'}>
+              <Route exact path={'/mergerequests'}>
                 <CommitsPerBranchPage />
               </Route>
               <Route exact path={'/timeperissuelabel'}>
