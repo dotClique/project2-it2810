@@ -11,7 +11,7 @@ export type ErrorResponse = {
 
 export type APIRequestMethods = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
-export type commit = {
+export type Commit = {
   id: string;
   short_id: string;
   title: string;
@@ -32,7 +32,7 @@ export type commit = {
   };
 };
 
-export type author = {
+export type Author = {
   name: string;
   num: number;
   feats: number;

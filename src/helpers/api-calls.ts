@@ -1,5 +1,5 @@
 import { PROJECT_ID } from './constants';
-import { APIRequestMethods, APIResponse, commit } from './types';
+import { APIRequestMethods, APIResponse, Commit } from './types';
 import { getEnv } from './utils';
 
 /**
@@ -34,7 +34,7 @@ export const getIssueBoardsFromAPI = async () => {
   return fromAPI('/boards', 'GET');
 };
 
-const getCommitsFromAPIRecursive = async (data: Array<commit>, page: number) => {
+const getCommitsFromAPIRecursive = async (data: Array<Commit>, page: number) => {
   return fromAPI(`/repository/commits?per_page=101000&page=${page}&with_stats=true`, 'GET').then(
     async (res) => {
       if (res.ok) {
@@ -52,6 +52,6 @@ const getCommitsFromAPIRecursive = async (data: Array<commit>, page: number) => 
 };
 
 export const getAllCommitsFromAPI = async () => {
-  let data: commit[] = [];
+  let data: Commit[] = [];
   return getCommitsFromAPIRecursive(data, 1);
 };
