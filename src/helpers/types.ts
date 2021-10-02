@@ -50,7 +50,7 @@ export type CommitAuthor = {
   active: boolean;
   additions: number;
   deletions: number;
-}
+};
 
 type StateGL = 'active' | 'inactive'; // The GitLab "state" attribute option (only sure about "active", do not know if "incative" is a state)
 
