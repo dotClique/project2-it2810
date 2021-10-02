@@ -49,7 +49,7 @@ export default function CommitsPerBranchPage() {
   return (
     <PageContainer>
       <header></header>
-      {data && <ChartBar data={data} title={'Commits by branch'} />}
+      {data && <ChartBar data={data} title={'Commits by merge request iid'} />}
       <div>
         {trueData &&
           activeBranch &&

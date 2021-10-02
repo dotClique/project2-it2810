@@ -33,7 +33,7 @@ function App() {
               <Route exact path={'/bar'}>
                 <BarChartPage />
               </Route>
-              <Route exact path={'/branches'}>
+              <Route exact path={'/mergerequests'}>
                 <CommitsPerBranchPage />
               </Route>
               <Route exact path={'/timeperissuelabel'}>

@@ -1,5 +1,5 @@
 import { ChartBarIcon, ChartPieIcon, CogIcon } from '@heroicons/react/outline';
-import { MenuIcon, ShareIcon } from '@heroicons/react/solid';
+import { MenuIcon, InboxInIcon } from '@heroicons/react/solid';
 import {
   AppBar,
   IconButton,
@@ -68,8 +68,8 @@ export default function NavBar(props: MenuProps) {
                 <Link underline="none" href={'/bar'}>
                   <MenuItem className={classes.menuItem}>Bar</MenuItem>
                 </Link>
-                <Link underline="none" href={'/branches'}>
-                  <MenuItem className={classes.menuItem}>Branches</MenuItem>
+                <Link underline="none" href={'/mergerequests'}>
+                  <MenuItem className={classes.menuItem}>Merge Requests</MenuItem>
                 </Link>
                 <Link underline="none" href={'/timeperissuelabel'}>
                   <MenuItem className={classes.menuItem}>Issue-label</MenuItem>
@@ -84,7 +84,7 @@ export default function NavBar(props: MenuProps) {
               <IconLink url={'commits'} title={'Commits'} icon={<ChartPieIcon />} />
               <IconLink url={'bar'} title={'Bar'} icon={<ChartBarIcon />} />
               <IconLink url={'timeperissuelabel'} title={'Issue-label'} icon={<ChartBarIcon />} />
-              <IconLink url={'branches'} title={'Branches'} icon={<ShareIcon />} />
+              <IconLink url={'mergerequests'} title={'Merge requests'} icon={<InboxInIcon />} />
               <IconLink
                 title={'settings'}
                 icon={<CogIcon />}
