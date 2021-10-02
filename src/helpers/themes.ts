@@ -40,4 +40,24 @@ const darkTheme = createTheme(
   { name: 'dark' },
 );
 
-export const themes = { light: lightTheme, dark: darkTheme };
+const funkTheme = createTheme(
+  {
+    palette: {
+      primary: {
+        main: '#a70f0f', // Temporary secondary theme
+        contrastText: '#022c53',
+      },
+      secondary: {
+        main: '#316d72', // Temporary primary theme
+        contrastText: '#31ff0d',
+      },
+      info: {
+        main: '#941681', // Temporary info theme
+        contrastText: '#e9cb14',
+      },
+    },
+  },
+  { name: 'dark' },
+);
+
+export const themes = { light: lightTheme, dark: darkTheme, wayTooManyColors: funkTheme };
