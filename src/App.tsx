@@ -6,7 +6,6 @@ import CommonLogic from './components/CommonLogic/index';
 import NavBar from './components/NavBar';
 import { OpenSettingsContext } from './helpers/context';
 import { backgroundTheme } from './helpers/themes';
-import BarChartPage from './pages/BarChartPage';
 import Home from './pages/Home/index';
 import SettingsPage from './pages/SettingsPage/index';
 import FeatsVsFixesPage from './pages/FeatsVsFixesPage';
@@ -28,9 +27,6 @@ function App() {
               </Route>
               <Route exact path={'/commits'}>
                 <FeatsVsFixesPage />
-              </Route>
-              <Route exact path={'/bar'}>
-                <BarChartPage />
               </Route>
               <Route exact path={'/timeperissuelabel'}>
                 <TimePerIssueLabelPage />
