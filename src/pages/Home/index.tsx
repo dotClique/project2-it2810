@@ -1,6 +1,6 @@
 import PageContainer from '../../components/PageContainer/index';
 import reactLogo from '../../assets/react.png';
-import gitlabLogo from '../../assets/gitlab.jpg';
+import gitlabLogo from '../../assets/gitlab.png';
 import materialUI from '../../assets/materialui.png';
 import useStyles from './styles';
 export default function Home() {
@@ -13,9 +13,15 @@ export default function Home() {
         the base graph components.
       </div>
       <div className={classes.imgContainer}>
-        <img src={reactLogo} alt={'react'} />
-        <img src={gitlabLogo} alt={'react'} />
-        <img src={materialUI} alt={'react'} />
+        <div>
+          <img src={reactLogo} alt={'react'} />
+        </div>
+        <div>
+          <img src={gitlabLogo} alt={'react'} />
+        </div>
+        <div>
+          <img className={classes.materialUILogo} src={materialUI} alt={'react'} />
+        </div>
       </div>
     </PageContainer>
   );

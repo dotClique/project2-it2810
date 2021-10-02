@@ -9,9 +9,14 @@ const useStyles = makeStyles(() =>
       width: '100%',
       '& *': {
         maxWidth: '100%',
+        display: 'flex',
+        justifyContent: 'center',
       },
       alignItems: 'center',
       marginTop: '2rem',
+    },
+    materialUILogo: {
+      maxWidth: '50%',
     },
   }),
 );
