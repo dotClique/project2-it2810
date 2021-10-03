@@ -57,16 +57,18 @@ export const getAllCommitsFromAPI = async () => {
 };
 
 const getMergeRequestsFromAPI = async (data: Array<MergeRequest>, page: number) => {
-  return fromAPI('/merge_requests?state=all&per_page=101000&&page=' + page, 'GET').then(async (res) => {
-    if (res.ok) {
-      data = data.concat(res.data as Array<MergeRequest>);
-      if (res.headers.get('x-next-page')) {
-        await getMergeRequestsFromAPI(data, page + 1);
-      } else {
-        return data;
+  return fromAPI('/merge_requests?state=all&per_page=101000&&page=' + page, 'GET').then(
+    async (res) => {
+      if (res.ok) {
+        data = data.concat(res.data as Array<MergeRequest>);
+        if (res.headers.get('x-next-page')) {
+          await getMergeRequestsFromAPI(data, page + 1);
+        } else {
+          return data;
+        }
       }
-    }
-  });
+    },
+  );
 };
 
 export const getAllMergeRequestsFromAPI = async () => {
