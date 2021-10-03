@@ -31,7 +31,7 @@ export const fromAPI = async (
 };
 
 export const getIssuesFromAPI = async (): Promise<APIResponse<Issue[]>> => {
-  return fromAPI('/issues', 'GET') as Promise<APIResponse<Issue[]>>;
+  return fromAPI('/issues?per_page=100', 'GET') as Promise<APIResponse<Issue[]>>;
 };
 
 const getCommitsFromAPIRecursive = async (data: Array<Commit>, page: number) => {
