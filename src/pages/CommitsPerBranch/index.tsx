@@ -4,20 +4,19 @@ import {
   getAllMergeRequestsFromAPI,
   getAllCommitsByMergeRequestFromAPI,
 } from '../../helpers/api-calls';
-import { useEffect, useState } from 'react';
-import { Commit } from '../../helpers/types';
+import { useCallback, useEffect, useState } from 'react';
+import { Commit, BarDataItem } from '../../helpers/types';
 import { Switch } from '@material-ui/core/';
 import useStyles from './styles';
 
 export default function CommitsPerBranchPage() {
-  const [data, setData] = useState<Array<{ barLabel: string; barValue: number }> | null>(null);
-  const [trueData, setTrueData] = useState<Array<{ barLabel: string; barValue: number }> | null>(
-    null,
-  );
-  const commitsByBranch: Array<{ barLabel: string; barValue: number }> = [];
+  const [data, setData] = useState<Array<BarDataItem> | null>(null);
+  const [trueData, setTrueData] = useState<Array<BarDataItem> | null>(null);
   const [activeBranch, setActiveBranch] = useState<Map<string, boolean> | null>(null);
   const classes = useStyles();
-  useEffect(() => {
+
+  const getCommitsPerRequest = useCallback(() => {
+    const commitsByBranch: Array<BarDataItem> = [];
     getAllMergeRequestsFromAPI().then((res) => {
       if (res) {
         getAllCommitsByMergeRequestFromAPI(res).then((res2) => {
@@ -45,6 +44,10 @@ export default function CommitsPerBranchPage() {
         });
       }
     });
+  }, [setData, setTrueData, setActiveBranch]);
+
+  useEffect(() => {
+    getCommitsPerRequest();
   }, []);
   return (
     <PageContainer>
@@ -62,14 +65,8 @@ export default function CommitsPerBranchPage() {
                     checked={activeBranch.get(m.barLabel)}
                     onChange={() => {
                       activeBranch.set(m.barLabel, !activeBranch.get(m.barLabel));
-                      const temp_list = [...trueData];
-                      for (let i = 0; i < temp_list.length; i++) {
-                        if (!activeBranch.get(temp_list[i].barLabel)) {
-                          temp_list.splice(i, 1);
-                          i--;
-                        }
-                      }
-                      setData(temp_list);
+                      const tempList = trueData.filter((data) => activeBranch.get(data.barLabel));
+                      setData(tempList);
                     }}
                   />
                   Merge Request no. {m.barLabel}

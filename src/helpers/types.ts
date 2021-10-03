@@ -138,16 +138,6 @@ export type Issue = {
   service_desk_reply_to: null;
 };
 
-export type Branch = {
-  name: string;
-  merged: boolean;
-  default: boolean;
-  developers_can_push: boolean;
-  can_push: true;
-  web_url: string;
-  commit: Commit;
-};
-
 export type MergeRequest = {
   id: number;
   iid: number;
