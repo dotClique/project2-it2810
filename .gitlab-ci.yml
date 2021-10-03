@@ -3,6 +3,7 @@ image: node
 stages:
   - build
   - lint
+  - test
 
 build site:
   image: node
@@ -26,3 +27,9 @@ prettier:
   script:
     - npm i prettier
     - npm run-script prettier
+
+testing:
+  stage: test
+  script:
+    - npm i jest
+    - nprm run tests
