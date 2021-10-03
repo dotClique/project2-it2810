@@ -34,24 +34,24 @@ export const getIssuesFromAPI = async (): Promise<APIResponse<Issue[]>> => {
   return fromAPI('/issues', 'GET') as Promise<APIResponse<Issue[]>>;
 };
 
-const getCommitsFromAPIRecursive = async (data: Array<Commit>, page: number) => {
-  return fromAPI(`/repository/commits?per_page=101000&page=${page}&with_stats=true`, 'GET').then(
+const getCommitsFromAPIRecursive = async (page: number): Promise<Commit[]> => {
+  return fromAPI(`/repository/commits?per_page=100&page=${page}&with_stats=true`, 'GET').then(
     async (res) => {
       if (res.ok) {
-        data = data.concat(res.data as Array<Commit>);
         if (res.headers.get('x-next-page')) {
-          await getCommitsFromAPIRecursive(data, page + 1).then((res_data) => {
-            return res_data;
+          return await getCommitsFromAPIRecursive(page + 1).then((res_data) => {
+            return res_data.concat(res.data as Commit[]);
           });
         } else {
-          return data;
+          return res.data as Commit[];
         }
+      } else {
+        return [];
       }
     },
   );
 };
 
 export const getAllCommitsFromAPI = async () => {
-  const data: Commit[] = [];
-  return getCommitsFromAPIRecursive(data, 1);
+  return getCommitsFromAPIRecursive(1);
 };
