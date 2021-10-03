@@ -1,5 +1,5 @@
 import { Label } from '../helpers/constants';
-import { BarDataItem, Issue } from '../helpers/types';
+import { BarDataItem, Issue, PieDataItem } from '../helpers/types';
 
 // Other created issues owerwrite this, as most is not used data.
 const issueRest: Issue = {
@@ -125,3 +125,19 @@ export const NO_DATA: BarDataItem[] = USED_LABELS.reduce((data: BarDataItem[], l
     },
   ];
 }, []);
+
+export const CHART_BAR_DATA: BarDataItem[] = [
+  {
+    barLabel: 'Label1',
+    barValue: 4,
+  },
+  { barLabel: 'Label2', barValue: 6 },
+];
+
+export const CHART_PIE_DATA: PieDataItem[] = [
+  {
+    commitType: 'Label1',
+    val: 4,
+  },
+  { commitType: 'Label2', val: 6 },
+];

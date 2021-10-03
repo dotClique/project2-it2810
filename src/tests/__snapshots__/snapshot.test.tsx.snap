@@ -1,0 +1,266 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot tests Snapshotting ChartBar 1`] = `
+<ChartContainer>
+  <Component
+    data={
+      Array [
+        Object {
+          "barLabel": "Label1",
+          "barValue": 4,
+        },
+        Object {
+          "barLabel": "Label2",
+          "barValue": 6,
+        },
+      ]
+    }
+  >
+    <Component
+      name="barValue"
+    />
+    <Component />
+    <Component
+      scaleName="barValue"
+      showGrid={false}
+      showLine={true}
+      showTicks={true}
+    />
+    <Component
+      argumentField="barLabel"
+      barWidth={0.9}
+      name="Units Sold"
+      scaleName="barValue"
+      valueField="barValue"
+    />
+    <Component
+      text="Some title"
+    />
+    <AnimationBase
+      duration={1000}
+      easing={[Function]}
+    />
+  </Component>
+</ChartContainer>
+`;
+
+exports[`Snapshot tests Snapshotting ChartPie 1`] = `
+<ChartContainer>
+  <Component
+    data={
+      Array [
+        Object {
+          "commitType": "Label1",
+          "val": 4,
+        },
+        Object {
+          "commitType": "Label2",
+          "val": 6,
+        },
+      ]
+    }
+  >
+    <Component />
+    <Component
+      argumentField="commitType"
+      innerRadius={0.6}
+      outerRadius={1}
+      valueField="val"
+    />
+    <Component
+      text="Some title"
+    />
+    <EventTrackerBase />
+    <Component />
+    <AnimationBase
+      duration={1000}
+      easing={[Function]}
+    />
+  </Component>
+</ChartContainer>
+`;
+
+exports[`Snapshot tests Snapshotting CommitsPerBranch page 1`] = `
+<PageContainer>
+  <header />
+  <div
+    className="makeStyles-switchcontainer-9"
+  />
+</PageContainer>
+`;
+
+exports[`Snapshot tests Snapshotting FeatVsFixesPage 1`] = `
+<PageContainer
+  title="Commit statistics"
+>
+  Here you can see data about the ratio between feats and fixes, and the ratio between lines of code added and deleted. This is cumulative data of all the commits in the master branch. You can also choose who you want to see data about. This is anonymised to preserve the authors' privacy.
+  <ChartPie
+    data={
+      Array [
+        Object {
+          "commitType": "feat",
+          "val": 0,
+        },
+        Object {
+          "commitType": "fix",
+          "val": 0,
+        },
+      ]
+    }
+    legend={true}
+    title="feats vs fixes"
+  />
+  <ChartPie
+    data={
+      Array [
+        Object {
+          "commitType": "additions",
+          "val": 0,
+        },
+        Object {
+          "commitType": "deletions",
+          "val": 0,
+        },
+      ]
+    }
+    legend={true}
+    title="additions vs deletions"
+  />
+</PageContainer>
+`;
+
+exports[`Snapshot tests Snapshotting Home page 1`] = `
+<PageContainer
+  title="Intro"
+>
+  <div>
+    In this project we visualize gitlab data about the repository used when developing this website. We use react and material UI for most of the layout, and use devexpress graphs for the base graph components.
+  </div>
+  <div
+    className="makeStyles-imgContainer-10"
+  >
+    <div>
+      <img
+        alt="react"
+        src="react.png"
+      />
+    </div>
+    <div>
+      <img
+        alt="react"
+        src="gitlab.png"
+      />
+    </div>
+    <div>
+      <img
+        alt="react"
+        className="makeStyles-materialUILogo-11"
+        src="materialui.png"
+      />
+    </div>
+  </div>
+</PageContainer>
+`;
+
+exports[`Snapshot tests Snapshotting PageContainer 1`] = `
+<WithStyles(ForwardRef(Grid))
+  className="makeStyles-background-6"
+  container={true}
+>
+  <WithStyles(ForwardRef(Container))
+    className="makeStyles-main-5"
+    maxWidth="md"
+  >
+    <h3>
+      Some title
+    </h3>
+    <div>
+      Hello world
+    </div>
+  </WithStyles(ForwardRef(Container))>
+</WithStyles(ForwardRef(Grid))>
+`;
+
+exports[`Snapshot tests Snapshotting Popup 1`] = `
+<WithStyles(ForwardRef(Dialog))
+  PaperProps={
+    Object {
+      "className": "makeStyles-dialog-4",
+    }
+  }
+  fullWidth={true}
+  maxWidth="xs"
+  onClose={[Function]}
+  open={true}
+>
+  <WithStyles(ForwardRef(IconButton))
+    aria-label="close"
+    className="makeStyles-closeButton-3"
+    onClick={[Function]}
+  >
+    <XIcon
+      width="1em"
+    />
+  </WithStyles(ForwardRef(IconButton))>
+  <h1
+    className="makeStyles-title-1"
+    id="dialogTitle"
+  >
+    Popup
+  </h1>
+  <div
+    className="makeStyles-contentDiv-2"
+  />
+</WithStyles(ForwardRef(Dialog))>
+`;
+
+exports[`Snapshot tests Snapshotting TimePerIssueLabelPage 1`] = `
+<PageContainer
+  title="Average  Close Time Per Issue-label"
+>
+  <p>
+    This counts only finished issues and it is the total time from the issue was created to it was closed.
+  </p>
+  <div>
+    <WithStyles(ForwardRef(FormControl))
+      className="makeStyles-dropdown-12"
+    >
+      <WithStyles(ForwardRef(InputLabel))>
+        Showing labels
+      </WithStyles(ForwardRef(InputLabel))>
+      <WithStyles(ForwardRef(Select))
+        className="makeStyles-select-13"
+        id="demo-simple-select"
+        labelId="demo-simple-select-label"
+        onChange={[Function]}
+        value="[\\"Good first issue\\",\\"Easy\\",\\"Hard\\",\\"Possibly impossible\\"]"
+      >
+        <WithStyles(ForwardRef(MenuItem))
+          key="[\\"Good first issue\\",\\"Easy\\",\\"Hard\\",\\"Possibly impossible\\"]"
+          value="[\\"Good first issue\\",\\"Easy\\",\\"Hard\\",\\"Possibly impossible\\"]"
+        >
+          <div>
+            Difficulty
+          </div>
+        </WithStyles(ForwardRef(MenuItem))>
+        <WithStyles(ForwardRef(MenuItem))
+          key="[\\"API\\",\\"Browser storage\\",\\"DevOps\\",\\"Testing\\"]"
+          value="[\\"API\\",\\"Browser storage\\",\\"DevOps\\",\\"Testing\\"]"
+        >
+          <div>
+            Tech Description
+          </div>
+        </WithStyles(ForwardRef(MenuItem))>
+        <WithStyles(ForwardRef(MenuItem))
+          key="[\\"Documentation\\",\\"Doing\\",\\"Important\\",\\"Set-up\\",\\"Planning\\"]"
+          value="[\\"Documentation\\",\\"Doing\\",\\"Important\\",\\"Set-up\\",\\"Planning\\"]"
+        >
+          <div>
+            Other
+          </div>
+        </WithStyles(ForwardRef(MenuItem))>
+      </WithStyles(ForwardRef(Select))>
+    </WithStyles(ForwardRef(FormControl))>
+  </div>
+</PageContainer>
+`;
