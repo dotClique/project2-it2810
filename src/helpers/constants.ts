@@ -10,7 +10,7 @@ export enum Label {
   DOING = 'Doing',
   IMPORTANT = 'Important',
   API = 'API',
-  POSSIBLY_IMPOSSIBLE = 'Possibly Impossible',
+  POSSIBLY_IMPOSSIBLE = 'Possibly impossible',
   EASY = 'Easy',
   GOOD_FIRST = 'Good first issue',
   SET_UP = 'Set-up',
