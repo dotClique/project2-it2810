@@ -32,4 +32,4 @@ testing:
   stage: test
   script:
     - npm i jest
-    - nprm run tests a
+    - npm run tests a
