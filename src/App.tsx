@@ -9,6 +9,7 @@ import { themes } from './helpers/themes';
 import Home from './pages/Home/index';
 import SettingsPage from './pages/SettingsPage/index';
 import FeatsVsFixesPage from './pages/FeatsVsFixesPage';
+import CommitsPerBranchPage from './pages/CommitsPerBranch';
 import TimePerIssueLabelPage from './pages/TimePerIssueLabelPage/index';
 import { Theme } from '@material-ui/core';
 import { useLocalStorage } from './helpers/hooks';
@@ -45,6 +46,9 @@ function App() {
               </Route>
               <Route exact path={'/commits'}>
                 <FeatsVsFixesPage />
+              </Route>
+              <Route exact path={'/mergerequests'}>
+                <CommitsPerBranchPage />
               </Route>
               <Route exact path={'/timeperissuelabel'}>
                 <TimePerIssueLabelPage />
