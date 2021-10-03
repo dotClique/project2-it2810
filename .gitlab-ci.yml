@@ -31,5 +31,5 @@ prettier:
 testing:
   stage: test
   script:
-    - npm i jest
+    - npm i
     - npm run test a
