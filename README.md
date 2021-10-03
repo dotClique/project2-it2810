@@ -36,5 +36,6 @@ When it comes to merge requests, we wanted to see the quantity of commits pr. me
 
 ## Testing
  - For testing of different screen sizes we used Google Chrome’s developer tools, as they allow you to simulate a variety of screen sizes, with both desktop screens and phone screens being possible to simulate. The standard for phone testing was iphone x, and for testing of phone landscape mode we used the pixel values of the iphone x too. For desktop and laptop screens we used a lot of different screen sizes during development, ranging from 4k to 1080p. The goals for the testing was that all elements were visible on the different devices, and that the elements weren’t unrecognizably warped from scaling, while the general aesthetic remained the same across devices.
+ - We also checked the layout on different devices in firefox and safari
  - For snapshot and unit testing the jest library was used.
 
