@@ -27,6 +27,7 @@ When it comes to merge requests, we wanted to see the quantity of commits pr. me
  - We used fetch() for the AJAX api-calls. because it always returns a promise that can be used for the data.
  - We used the default react-viewport, as we experienced that it works well enough for our purposes.
  - We used Material UI’s default method of handling media queries to alter the css based on the display width.
+ - We used the built in gitlab-ci pipeline to check that pushed builds could be built, had been properly formatted and that they passed the tests we had.
 
 ## Design
  - The Navbar has a flexible layout, which for big screens has icons and names of the different pages as clickables, but for smaller screens it has a hamburger button with a dropdown menu to compensate for the lack of space.
