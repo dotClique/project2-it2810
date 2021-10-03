@@ -112,8 +112,8 @@ export type Issue = {
   state: StateGL;
   created_at: string;
   updated_at: string;
-  closed_at: string;
-  closed_by: string;
+  closed_at: string | null;
+  closed_by: string | null;
   labels: string[];
   milestone: Milestone;
   assignees: [];
