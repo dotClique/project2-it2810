@@ -32,8 +32,12 @@ export default function FeatsVsFixesPage() {
     if (selectedAuthors[i]) {
       featsFixesGraphData[0].val += authorData[i].feats;
       featsFixesGraphData[1].val += authorData[i].fixes;
-      additionsDeletionsGraphData[0].val += authorData[i].additions;
-      additionsDeletionsGraphData[1].val += authorData[i].deletions;
+
+      // only add data if author has any feats or fixes
+      if (authorData[i].feats || authorData[i].fixes) {
+        additionsDeletionsGraphData[0].val += authorData[i].additions;
+        additionsDeletionsGraphData[1].val += authorData[i].deletions;
+      }
     }
   }
   useEffect(() => {
