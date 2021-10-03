@@ -39,7 +39,9 @@ export default function FeatsVsFixesPage() {
   useEffect(() => {
     getAllCommitsFromAPI().then((res) => {
       if (res) {
-        setAuthorData(parseCommitData(res));
+        const parsedData = parseCommitData(res);
+        setAuthorData(parsedData);
+        if (!selectedAuthors.length) setSelectedAuthors(new Array(parsedData.length).fill(true));
       }
     });
   }, []);
@@ -57,7 +59,7 @@ export default function FeatsVsFixesPage() {
               Person {i + 1}
               <Checkbox
                 className={classes.checkbox}
-                checked={selectedAuthors[i]}
+                checked={selectedAuthors[i] || false}
                 onChange={() => {
                   if (!selectedAuthors) return; // selectedAuthors will never be undefined
                   const tempList = [...selectedAuthors];
