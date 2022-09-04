@@ -4,6 +4,7 @@
 
 This website was created for visualizing data about the repository used in the development, using react with npm.
 We wanted to at least include some data about commits, issues and branches.
+Before running, you have to create a `.env.local` file with REACT_APP_API_ACCESS_TOKEN set to the group access token for this project in gitlab. 
 
 ### Commit page
 
