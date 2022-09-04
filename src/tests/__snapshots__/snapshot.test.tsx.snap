@@ -198,7 +198,7 @@ exports[`Snapshot tests Snapshotting Popup 1`] = `
     className="makeStyles-closeButton-3"
     onClick={[Function]}
   >
-    <XIcon
+    <ForwardRef(XIcon)
       width="1em"
     />
   </WithStyles(ForwardRef(IconButton))>

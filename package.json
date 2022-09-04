@@ -52,6 +52,9 @@
       "last 1 safari version"
     ]
   },
+  "resolutions": {
+    "@types/react": "17.0.40"
+  },
   "devDependencies": {
     "@types/enzyme": "^3.10.9",
     "@types/jest": "^26.0.24",

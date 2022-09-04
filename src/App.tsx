@@ -1,18 +1,18 @@
-import { ThemeProvider } from '@material-ui/styles';
+import { Theme } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/core/styles';
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import CommonLogic from './components/CommonLogic/index';
 import NavBar from './components/NavBar';
 import { OpenSettingsContext } from './helpers/context';
+import { useLocalStorage } from './helpers/hooks';
 import { themes } from './helpers/themes';
+import CommitsPerBranchPage from './pages/CommitsPerBranch';
+import FeatsVsFixesPage from './pages/FeatsVsFixesPage';
 import Home from './pages/Home/index';
 import SettingsPage from './pages/SettingsPage/index';
-import FeatsVsFixesPage from './pages/FeatsVsFixesPage';
-import CommitsPerBranchPage from './pages/CommitsPerBranch';
 import TimePerIssueLabelPage from './pages/TimePerIssueLabelPage/index';
-import { Theme } from '@material-ui/core';
-import { useLocalStorage } from './helpers/hooks';
 
 function App() {
   const [openSettings, setOpenSettings] = useState(false);
